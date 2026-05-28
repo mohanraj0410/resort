@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #a10d0d;
+  --color-primary-light: #c21a12;
+  --color-secondary: #c68a1f;
+  --color-secondary-light: #d4a02a;
+  --color-dark: #0f0a08;
+  --color-dark-soft: #1a1210;
+  --color-cream: #f8f4ef;
+  --color-muted: #9a8f87;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark text-cream font-body antialiased overflow-x-hidden;
+  }
+
+  ::selection {
+    @apply bg-secondary/40 text-cream;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-secondary to-secondary-light bg-clip-text text-transparent;
+  }
+
+  .text-gradient-red {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto w-full;
+  }
+}
