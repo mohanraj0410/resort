@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
 import { FAQS } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
+import IconMap from '../components/ui/IconMap';
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
@@ -16,7 +16,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
           {item.q}
         </span>
         <span className="w-8 h-8 rounded-full glass flex items-center justify-center shrink-0 text-secondary">
-          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+          <IconMap name={isOpen ? 'Minus' : 'Plus'} size={16} />
         </span>
       </button>
       <AnimatePresence initial={false}>
@@ -45,7 +45,7 @@ export default function FAQ() {
         <SectionHeading
           label="FAQ"
           title="Frequently Asked Questions"
-          subtitle="Everything you need to know before your stay at Crimson Vale."
+          subtitle="Everything you need to know before your stay at Red Sort Resort."
         />
 
         <motion.div

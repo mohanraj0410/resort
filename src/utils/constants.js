@@ -1,13 +1,15 @@
 export const RESORT = {
-  name: 'Crimson Vale',
-  tagline: 'Luxury Hillside Retreat',
-  phone: '+91 98765 43210',
-  email: 'concierge@crimsonvale.com',
-  whatsapp: '919876543210',
-  address: 'Valley Ridge Road, Munnar Hills, Kerala 685612, India',
+  name: 'Red Sort Resort',
+  shortName: 'Red Sort',
+  tagline: 'Luxury Heritage Retreat',
+  phone: '+91 99999 99999',
+  email: 'concierge@redsortresort.com',
+  whatsapp: '919999999999',
+  whatsappUrl: 'https://wa.me/919999999999',
+  address: 'Heritage Valley Road, Munnar Hills, Kerala 685612, India',
   mapEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.287!2d77.059!3d10.089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDA1JzIwLjQiTiA3N8KwMDMnMzIuNCJF!5e0!3m2!1sen!2sin!4v1',
-  directionsUrl: 'https://maps.google.com/?q=Crimson+Vale+Resort+Munnar',
+  directionsUrl: 'https://maps.google.com/?q=Red+Sort+Resort+Munnar',
 };
 
 export const NAV_LINKS = [
@@ -22,7 +24,7 @@ export const NAV_LINKS = [
 export const HERO_SLIDES = [
   {
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80',
-    alt: 'Luxury resort pool at sunset',
+    alt: 'Red Sort Resort pool at sunset',
   },
   {
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80',
@@ -172,7 +174,7 @@ export const FAQS = [
     a: 'Absolutely. We offer family suites, a kids\' activity zone, babysitting services, and child-friendly dining options.',
   },
   {
-    q: 'Can I host a wedding at Crimson Vale?',
+    q: 'Can I host a wedding at Red Sort Resort?',
     a: 'We specialize in destination weddings with dedicated planners, customizable packages, and stunning outdoor venues for up to 300 guests.',
   },
   {
@@ -190,7 +192,7 @@ export const TESTIMONIALS = [
     name: 'Priya & Arjun Mehta',
     location: 'Mumbai, India',
     rating: 5,
-    text: 'Our wedding at Crimson Vale was nothing short of magical. Every detail was flawless — from the floral arrangements to the sunset ceremony.',
+    text: 'Our wedding at Red Sort Resort was nothing short of magical. Every detail was flawless — from the floral arrangements to the sunset ceremony.',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80',
   },
   {

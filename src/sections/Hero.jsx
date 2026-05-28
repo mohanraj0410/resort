@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import IconMap from '../components/ui/IconMap';
 import { HERO_SLIDES } from '../utils/constants';
 import Button from '../components/ui/Button';
 
@@ -36,8 +36,9 @@ export default function Hero({ onBookNow }) {
             />
           </motion.div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-transparent to-dark/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent" />
       </motion.div>
 
       {/* Floating elements */}
@@ -121,7 +122,7 @@ export default function Hero({ onBookNow }) {
         transition={{ duration: 2, repeat: Infinity }}
         aria-label="Scroll down"
       >
-        <ChevronDown size={28} />
+        <IconMap name="ChevronDown" size={28} />
       </motion.a>
 
       <style>{`

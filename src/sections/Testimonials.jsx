@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
 import StarRating from '../components/ui/StarRating';
+import IconMap from '../components/ui/IconMap';
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
@@ -27,11 +27,11 @@ export default function Testimonials() {
         <SectionHeading
           label="Testimonials"
           title="Guest Experiences"
-          subtitle="Hear from those who have experienced the magic of Crimson Vale."
+          subtitle="Hear from those who have experienced the magic of Red Sort Resort."
         />
 
         <div className="max-w-3xl mx-auto relative">
-          <Quote className="absolute -top-4 left-0 w-12 h-12 text-secondary/20" />
+          <IconMap name="Quote" size={48} className="absolute -top-4 left-0 text-secondary/20" />
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -51,6 +51,7 @@ export default function Testimonials() {
                   src={review.avatar}
                   alt={review.name}
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-secondary/30"
+                  loading="lazy"
                 />
                 <div className="text-left">
                   <p className="font-medium text-cream">{review.name}</p>
@@ -66,7 +67,7 @@ export default function Testimonials() {
               className="w-10 h-10 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
               aria-label="Previous review"
             >
-              <ChevronLeft size={20} />
+              <IconMap name="ChevronLeft" size={20} />
             </button>
             <div className="flex gap-2">
               {TESTIMONIALS.map((_, i) => (
@@ -85,7 +86,7 @@ export default function Testimonials() {
               className="w-10 h-10 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
               aria-label="Next review"
             >
-              <ChevronRight size={20} />
+              <IconMap name="ChevronRight" size={20} />
             </button>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import { MapPin, Navigation, Phone } from 'lucide-react';
 import { RESORT } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
+import IconMap from '../components/ui/IconMap';
 import { slideInLeft, slideInRight } from '../animations/variants';
 
 export default function MapSection() {
@@ -25,7 +25,7 @@ export default function MapSection() {
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
-                <MapPin className="text-primary-light" size={24} />
+                <IconMap name="MapPin" size={24} className="text-primary-light" />
               </div>
               <h3 className="font-display text-2xl font-semibold text-cream mb-4">Visit Us</h3>
               <p className="text-cream/70 leading-relaxed text-sm">{RESORT.address}</p>
@@ -35,19 +35,15 @@ export default function MapSection() {
                   href={`tel:${RESORT.phone}`}
                   className="flex items-center gap-3 text-sm text-cream/70 hover:text-secondary transition-colors"
                 >
-                  <Phone size={16} className="text-secondary" />
+                  <IconMap name="Phone" size={16} className="text-secondary" />
                   {RESORT.phone}
                 </a>
               </div>
             </div>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <Button
-                variant="secondary"
-                href={RESORT.directionsUrl}
-                className="flex-1 text-center"
-              >
-                <Navigation size={16} />
+              <Button variant="secondary" href={RESORT.directionsUrl} className="flex-1 text-center">
+                <IconMap name="Navigation" size={16} />
                 Get Directions
               </Button>
             </div>
@@ -61,7 +57,7 @@ export default function MapSection() {
             className="lg:col-span-3 rounded-3xl overflow-hidden glass-card h-[300px] sm:h-[400px] lg:h-auto min-h-[300px]"
           >
             <iframe
-              title="Crimson Vale Resort Location"
+              title="Red Sort Resort Location"
               src={RESORT.mapEmbed}
               className="w-full h-full border-0 grayscale-[30%] contrast-[1.1]"
               loading="lazy"

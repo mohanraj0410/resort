@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Navigation } from 'lucide-react';
 import { NEARBY_PLACES } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
+import IconMap from '../components/ui/IconMap';
 import { staggerContainer, fadeInUp } from '../animations/variants';
 
 export default function NearbyPlaces() {
@@ -11,7 +11,7 @@ export default function NearbyPlaces() {
         <SectionHeading
           label="Explore"
           title="Nearby Attractions"
-          subtitle="Discover the natural wonders and cultural gems surrounding our resort."
+          subtitle="Discover the natural wonders and cultural gems surrounding Red Sort Resort."
         />
 
         <motion.div
@@ -41,11 +41,11 @@ export default function NearbyPlaces() {
                 <h3 className="font-display text-lg font-semibold text-cream">{place.name}</h3>
                 <div className="flex items-center gap-4 mt-3 text-sm text-muted">
                   <span className="flex items-center gap-1">
-                    <MapPin size={14} className="text-secondary" />
+                    <IconMap name="MapPin" size={14} className="text-secondary" />
                     {place.distance}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Clock size={14} className="text-secondary" />
+                    <IconMap name="Clock" size={14} className="text-secondary" />
                     {place.time}
                   </span>
                 </div>
@@ -55,7 +55,7 @@ export default function NearbyPlaces() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-2 text-sm text-secondary hover:text-secondary-light transition-colors"
                 >
-                  <Navigation size={14} />
+                  <IconMap name="Navigation" size={14} />
                   Get Directions
                 </a>
               </div>

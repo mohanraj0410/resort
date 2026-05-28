@@ -25,7 +25,7 @@ export default function About() {
         <SectionHeading
           label="Our Story"
           title="A Legacy of Luxury Hospitality"
-          subtitle="Nestled among misty hills and lush tea gardens, Crimson Vale has been redefining luxury retreats since 2008."
+          subtitle="Nestled among misty hills and lush tea gardens, Red Sort Resort has been redefining luxury retreats since 2008."
         />
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -64,7 +64,7 @@ export default function About() {
           >
             <p className="text-cream/80 leading-relaxed mb-4">
               Born from a vision to create an oasis where modern luxury harmonizes with untouched natural beauty,
-              Crimson Vale Resort offers an experience that transcends ordinary hospitality.
+              Red Sort Resort offers an experience that transcends ordinary hospitality.
             </p>
             <p className="text-cream/60 leading-relaxed mb-6">
               Every corner of our property tells a story — from hand-crafted interiors inspired by local heritage

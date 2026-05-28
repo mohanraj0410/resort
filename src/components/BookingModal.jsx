@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, Users } from 'lucide-react';
 import Button from './ui/Button';
+import IconMap from './ui/IconMap';
 
 export default function BookingModal({ isOpen, onClose }) {
   const [form, setForm] = useState({
@@ -47,25 +47,21 @@ export default function BookingModal({ isOpen, onClose }) {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="font-display text-2xl font-semibold text-cream">Reserve Your Stay</h3>
-                <p className="text-sm text-muted mt-1">Experience luxury at its finest</p>
+                <p className="text-sm text-muted mt-1">Red Sort Resort — luxury awaits</p>
               </div>
               <button
                 onClick={onClose}
                 className="w-9 h-9 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
                 aria-label="Close"
               >
-                <X size={18} />
+                <IconMap name="X" size={18} />
               </button>
             </div>
 
             {submitted ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-center py-8"
-              >
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-8">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
-                  <Calendar className="text-secondary" size={28} />
+                  <IconMap name="Calendar" size={28} className="text-secondary" />
                 </div>
                 <p className="text-lg text-cream">Booking request received!</p>
                 <p className="text-sm text-muted mt-2">Our concierge will contact you shortly.</p>
@@ -114,7 +110,11 @@ export default function BookingModal({ isOpen, onClose }) {
                   </div>
                 </div>
                 <div className="relative">
-                  <Users size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted" />
+                  <IconMap
+                    name="Users"
+                    size={16}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-muted"
+                  />
                   <select
                     name="guests"
                     value={form.guests}

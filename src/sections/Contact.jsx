@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MessageCircle } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { RESORT, SOCIAL_LINKS } from '../utils/constants';
 import { validateContactForm } from '../utils/validators';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
+import Logo from '../components/ui/Logo';
 import IconMap from '../components/ui/IconMap';
 import { slideInLeft, slideInRight } from '../animations/variants';
 
@@ -61,7 +62,7 @@ export default function Contact() {
                 className="glass-card rounded-3xl p-10 text-center"
               >
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
-                  <Send className="text-secondary" size={28} />
+                  <IconMap name="Send" size={28} className="text-secondary" />
                 </div>
                 <h3 className="font-display text-2xl text-cream">Message Sent!</h3>
                 <p className="text-muted mt-2 text-sm">We&apos;ll get back to you within 24 hours.</p>
@@ -111,7 +112,7 @@ export default function Contact() {
                   {errors.message && <p className="text-primary-light text-xs mt-1">{errors.message}</p>}
                 </div>
                 <Button type="submit" variant="secondary" className="w-full">
-                  <Send size={16} />
+                  <IconMap name="Send" size={16} />
                   Send Message
                 </Button>
               </form>
@@ -125,17 +126,14 @@ export default function Contact() {
             viewport={{ once: true }}
             className="flex flex-col justify-center"
           >
-            <div className="glass-card rounded-3xl p-6 md:p-8 mb-6">
-              <h3 className="font-display text-xl font-semibold text-cream mb-4">Quick Contact</h3>
-              <p className="text-sm text-muted mb-6">
-                Prefer instant messaging? Reach us on WhatsApp for immediate assistance.
+            <div className="glass-card rounded-3xl p-6 md:p-8 mb-6 text-center sm:text-left">
+              <Logo size="lg" className="justify-center sm:justify-start mb-6" />
+              <h3 className="font-display text-xl font-semibold text-cream mb-2">{RESORT.name}</h3>
+              <p className="text-sm text-muted mb-6 leading-relaxed">
+                Reach our concierge for bookings, events, and personalized experiences at {RESORT.name}.
               </p>
-              <Button
-                variant="primary"
-                href={`https://wa.me/${RESORT.whatsapp}`}
-                className="w-full sm:w-auto"
-              >
-                <MessageCircle size={18} />
+              <Button variant="primary" href={RESORT.whatsappUrl} className="w-full sm:w-auto">
+                <FaWhatsapp size={20} />
                 Chat on WhatsApp
               </Button>
             </div>
@@ -152,7 +150,7 @@ export default function Contact() {
                     className="w-11 h-11 rounded-full glass flex items-center justify-center text-secondary hover:bg-secondary/20 transition-colors"
                     aria-label={s.platform}
                   >
-                    <IconMap name={s.icon} className="w-5 h-5" />
+                    <IconMap name={s.icon} size={20} />
                   </a>
                 ))}
               </div>

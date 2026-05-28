@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn } from 'lucide-react';
+import IconMap from '../components/ui/IconMap';
 import { GALLERY_IMAGES, GALLERY_CATEGORIES } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
 import Skeleton from '../components/ui/Skeleton';
@@ -39,7 +39,7 @@ export default function Gallery() {
         <SectionHeading
           label="Gallery"
           title="Moments Captured in Time"
-          subtitle="Explore the beauty and elegance of Crimson Vale through our lens."
+          subtitle="Explore the beauty and elegance of Red Sort Resort through our lens."
         />
 
         <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -78,7 +78,7 @@ export default function Gallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
                   <span className="text-sm text-cream">{img.category}</span>
-                  <ZoomIn size={20} className="text-secondary" />
+                  <IconMap name="ZoomIn" size={20} className="text-secondary" />
                 </div>
               </motion.div>
             ))}
@@ -100,7 +100,7 @@ export default function Gallery() {
               onClick={closeLightbox}
               aria-label="Close lightbox"
             >
-              <X size={20} />
+              <IconMap name="X" size={20} />
             </button>
             <motion.img
               initial={{ scale: 0.8 }}

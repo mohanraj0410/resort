@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Calendar } from 'lucide-react';
 import { EVENT_TYPES, UPCOMING_EVENTS } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
 import IconMap from '../components/ui/IconMap';
@@ -39,7 +38,7 @@ export default function Events() {
               <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent" />
               <div className="absolute bottom-0 p-5 md:p-6">
                 <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center mb-3">
-                  <IconMap name={event.icon} className="w-5 h-5 text-secondary" />
+                  <IconMap name={event.icon} size={20} className="text-secondary" />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-cream">{event.title}</h3>
                 <p className="text-sm text-cream/60 mt-2 leading-relaxed">{event.desc}</p>
@@ -50,7 +49,7 @@ export default function Events() {
 
         <div className="glass-card rounded-3xl p-6 md:p-10">
           <div className="flex items-center gap-3 mb-8">
-            <Calendar className="text-secondary" size={24} />
+            <IconMap name="Calendar" size={24} className="text-secondary" />
             <h3 className="font-display text-2xl font-semibold text-cream">Upcoming Events</h3>
           </div>
           <div className="space-y-0">

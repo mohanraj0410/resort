@@ -4,7 +4,7 @@ import Home from './pages/Home';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/resort">
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />

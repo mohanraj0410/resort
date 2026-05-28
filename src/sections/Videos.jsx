@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { SHORT_VIDEOS } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
+import IconMap from '../components/ui/IconMap';
 
 function VideoCard({ item }) {
   const videoRef = useRef(null);
@@ -42,7 +42,7 @@ function VideoCard({ item }) {
         {!playing && (
           <div className="absolute inset-0 flex items-center justify-center bg-dark/30">
             <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-              <Play size={24} className="text-cream ml-1" fill="currentColor" />
+              <IconMap name="Play" size={28} className="text-cream ml-1" />
             </div>
           </div>
         )}
@@ -71,7 +71,7 @@ export default function Videos() {
             <SectionHeading
               label="Experience"
               title="Resort Reels"
-              subtitle="Short glimpses into the Crimson Vale lifestyle."
+              subtitle="Short glimpses into the Red Sort Resort lifestyle."
               align="left"
             />
           </div>
@@ -81,14 +81,14 @@ export default function Videos() {
               className="w-10 h-10 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
               aria-label="Previous"
             >
-              <ChevronLeft size={20} />
+              <IconMap name="ChevronLeft" size={20} />
             </button>
             <button
               onClick={() => scroll(1)}
               className="w-10 h-10 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
               aria-label="Next"
             >
-              <ChevronRight size={20} />
+              <IconMap name="ChevronRight" size={20} />
             </button>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function Videos() {
 
       <motion.div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-4 snap-x snap-mandatory scrollbar-hide"
+        className="flex gap-4 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-4 snap-x snap-mandatory"
         style={{ scrollbarWidth: 'none' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
