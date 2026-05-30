@@ -33,21 +33,24 @@ export default function Gallery() {
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
 
+  const imageHeights = ['h-44 xs:h-52 sm:h-56', 'h-40 xs:h-48 sm:h-52', 'h-48 xs:h-56 sm:h-64'];
+
   return (
-    <section id="gallery" className="section-padding bg-dark">
+    <section id="gallery" className="section-padding bg-dark overflow-hidden">
       <div className="section-container">
         <SectionHeading
           label="Gallery"
           title="Moments Captured in Time"
-          subtitle="Explore the beauty and elegance of Red Sort Resort through our lens."
+          subtitle="Explore the beauty and elegance of Red Fort Resort through our lens."
         />
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-1 sm2:gap-2 mb-6 sm2:mb-10 -mx-0.5">
           {GALLERY_CATEGORIES.map((cat) => (
             <button
               key={cat}
+              type="button"
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-full text-sm transition-all duration-300 ${
+              className={`px-2.5 py-1 sm2:px-4 sm2:py-2 rounded-full text-[10px] sm2:text-sm transition-all duration-300 whitespace-nowrap ${
                 filter === cat
                   ? 'bg-gradient-to-r from-primary to-primary-light text-white'
                   : 'glass text-cream/70 hover:text-cream'
@@ -58,7 +61,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+        <motion.div layout className="columns-1 sm2:columns-2 lg:columns-3 gap-3 sm2:gap-4 space-y-3 sm2:space-y-4">
           <AnimatePresence mode="popLayout">
             {filtered.map((img, i) => (
               <motion.div
@@ -68,17 +71,17 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: i * 0.03 }}
-                className="break-inside-avoid group relative rounded-2xl overflow-hidden cursor-pointer"
+                className="break-inside-avoid group relative rounded-xl xs:rounded-2xl overflow-hidden cursor-pointer mb-3 xs:mb-4"
                 onClick={() => setLightbox(img)}
               >
                 <LazyImage
                   src={img.src}
                   alt={img.alt}
-                  className={`${i % 3 === 0 ? 'h-72' : i % 3 === 1 ? 'h-56' : 'h-64'}`}
+                  className={imageHeights[i % 3]}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
-                  <span className="text-sm text-cream">{img.category}</span>
-                  <IconMap name="ZoomIn" size={20} className="text-secondary" />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 xs:p-4">
+                  <span className="text-xs xs:text-sm text-cream">{img.category}</span>
+                  <IconMap name="ZoomIn" size={18} className="text-secondary shrink-0" />
                 </div>
               </motion.div>
             ))}
@@ -92,11 +95,12 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] bg-black/90 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[300] bg-black/90 flex items-center justify-center p-3 xs:p-4"
             onClick={closeLightbox}
           >
             <button
-              className="absolute top-6 right-6 w-10 h-10 rounded-full glass flex items-center justify-center text-cream"
+              type="button"
+              className="absolute top-4 right-4 xs:top-6 xs:right-6 w-10 h-10 rounded-full glass flex items-center justify-center text-cream z-10"
               onClick={closeLightbox}
               aria-label="Close lightbox"
             >
@@ -108,7 +112,7 @@ export default function Gallery() {
               exit={{ scale: 0.8 }}
               src={lightbox.src.replace('w=800', 'w=1200')}
               alt={lightbox.alt}
-              className="max-w-full max-h-[85vh] object-contain rounded-2xl"
+              className="max-w-full max-h-[80vh] xs:max-h-[85vh] object-contain rounded-xl xs:rounded-2xl"
               onClick={(e) => e.stopPropagation()}
             />
           </motion.div>

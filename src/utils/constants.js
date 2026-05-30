@@ -1,15 +1,15 @@
 export const RESORT = {
-  name: 'Red Sort Resort',
-  shortName: 'Red Sort',
+  name: 'Red Fort Resort',
+  shortName: 'Red Fort',
   tagline: 'Luxury Heritage Retreat',
-  phone: '+91 99999 99999',
-  email: 'concierge@redsortresort.com',
-  whatsapp: '919999999999',
-  whatsappUrl: 'https://wa.me/919999999999',
-  address: 'Heritage Valley Road, Munnar Hills, Kerala 685612, India',
+  phone: '+91 98945 11744',
+  email: 'hello@redfort.com',
+  whatsapp: '919894511911',
+  whatsappUrl: 'https://wa.me/919894511911',
+  address: '112,Vellimedu Via ,Siruvani mainroad, Alandurai, Coimbatore- 641101',
   mapEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.287!2d77.059!3d10.089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDA1JzIwLjQiTiA3N8KwMDMnMzIuNCJF!5e0!3m2!1sen!2sin!4v1',
-  directionsUrl: 'https://maps.google.com/?q=Red+Sort+Resort+Munnar',
+    "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d930.8093314137143!2d76.8088344!3d10.95962!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8674cdab52a1f%3A0xaa41d2285b6313be!2sRed%20Fort%20Resort!5e1!3m2!1sen!2sin!4v1780147975020!5m2!1sen!2sin",
+  directionsUrl: 'https://maps.google.com/?q=Red+Fort+Resort',
 };
 
 export const NAV_LINKS = [
@@ -24,7 +24,7 @@ export const NAV_LINKS = [
 export const HERO_SLIDES = [
   {
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80',
-    alt: 'Red Sort Resort pool at sunset',
+    alt: 'Red Fort Resort pool at sunset',
   },
   {
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80',
@@ -131,33 +131,89 @@ export const UPCOMING_EVENTS = [
 
 export const NEARBY_PLACES = [
   {
-    name: 'Tea Garden Valley',
-    distance: '4.2 km',
-    time: '12 min',
-    image: 'https://images.unsplash.com/photo-1564890369478-9b496a0f204f?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Tea+Garden+Munnar',
+    name: 'Adiyogi Shiva Statue',
+    distance: '24 km',
+    time: '35 min',
+    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Adiyogi+Shiva+Statue+Coimbatore',
   },
   {
-    name: 'Echo Point Lookout',
-    distance: '8.5 km',
-    time: '22 min',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Echo+Point+Munnar',
+    name: 'Isha Yoga Center',
+    distance: '25 km',
+    time: '36 min',
+    image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Isha+Yoga+Center+Coimbatore',
   },
   {
-    name: 'Attukad Waterfalls',
-    distance: '11 km',
-    time: '28 min',
-    image: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Attukad+Waterfalls',
-  },
-  {
-    name: 'Eravikulam National Park',
-    distance: '18 km',
+    name: 'Kovai Kutralam Falls',
+    distance: '28 km',
     time: '45 min',
-    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Eravikulam+National+Park',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Kovai+Kutralam+Falls',
   },
+  {
+    name: 'Siruvani Dam',
+    distance: '33 km',
+    time: '55 min',
+    image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Siruvani+Dam',
+  },
+  {
+    name: 'Marudhamalai Temple',
+    distance: '18 km',
+    time: '30 min',
+    image: 'https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Marudhamalai+Temple',
+  },
+  {
+    name: 'VOC Park and Zoo',
+    distance: '22 km',
+    time: '35 min',
+    image: 'https://images.unsplash.com/photo-1511497584788-876760111969?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=VOC+Park+Coimbatore',
+  },
+  {
+    name: 'Gass Forest Museum',
+    distance: '20 km',
+    time: '32 min',
+    image: 'https://images.unsplash.com/photo-1566127992631-137a642a90f4?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Gass+Forest+Museum+Coimbatore',
+  },
+  {
+    name: 'TNAU Botanical Garden',
+    distance: '18 km',
+    time: '28 min',
+    image: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=TNAU+Botanical+Garden',
+  },
+  {
+    name: 'Kovai Kondattam',
+    distance: '17 km',
+    time: '28 min',
+    image: 'https://images.unsplash.com/photo-1538485399081-7c897b1f2f8f?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Kovai+Kondattam',
+  },
+  {
+    name: 'Monkey Falls',
+    distance: '58 km',
+    time: '1 hr 15 min',
+    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Monkey+Falls+Pollachi',
+  },
+  {
+    name: 'Aliyar Dam',
+    distance: '62 km',
+    time: '1 hr 20 min',
+    image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Aliyar+Dam',
+  },
+  {
+    name: 'Valparai Hills',
+    distance: '95 km',
+    time: '2 hr 30 min',
+    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80',
+    mapsUrl: 'https://maps.google.com/?q=Valparai',
+  }
 ];
 
 export const FAQS = [
@@ -174,7 +230,7 @@ export const FAQS = [
     a: 'Absolutely. We offer family suites, a kids\' activity zone, babysitting services, and child-friendly dining options.',
   },
   {
-    q: 'Can I host a wedding at Red Sort Resort?',
+    q: 'Can I host a wedding at Red Fort Resort?',
     a: 'We specialize in destination weddings with dedicated planners, customizable packages, and stunning outdoor venues for up to 300 guests.',
   },
   {
@@ -187,42 +243,11 @@ export const FAQS = [
   },
 ];
 
-export const TESTIMONIALS = [
-  {
-    name: 'Priya & Arjun Mehta',
-    location: 'Mumbai, India',
-    rating: 5,
-    text: 'Our wedding at Red Sort Resort was nothing short of magical. Every detail was flawless — from the floral arrangements to the sunset ceremony.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80',
-  },
-  {
-    name: 'James Whitfield',
-    location: 'London, UK',
-    rating: 5,
-    text: 'The spa treatments and infinity pool views made this the most rejuvenating holiday we have ever experienced. Truly world-class hospitality.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
-  },
-  {
-    name: 'Ananya Sharma',
-    location: 'Bangalore, India',
-    rating: 5,
-    text: 'We hosted our company retreat here and the team was blown away. Impeccable service, stunning venues, and gourmet cuisine throughout.',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80',
-  },
-  {
-    name: 'Elena Rodriguez',
-    location: 'Barcelona, Spain',
-    rating: 5,
-    text: 'Waking up to misty mountain views from our suite balcony was unforgettable. The staff anticipated every need before we even asked.',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80',
-  },
-];
-
 export const SOCIAL_LINKS = [
-  { platform: 'Instagram', url: 'https://instagram.com', icon: 'Instagram' },
-  { platform: 'Facebook', url: 'https://facebook.com', icon: 'Facebook' },
-  { platform: 'Twitter', url: 'https://twitter.com', icon: 'Twitter' },
-  { platform: 'Youtube', url: 'https://youtube.com', icon: 'Youtube' },
+  { platform: 'Instagram', url: 'https://instagram.com/redfort_resort', icon: 'Instagram' },
+  { platform: 'Facebook', url: 'https://facebook.com/redfort_resort', icon: 'Facebook' },
+  { platform: 'Twitter', url: 'https://twitter.com/redfort_resort', icon: 'Twitter' },
+  { platform: 'Youtube', url: 'https://youtube.com/redfort_resort', icon: 'Youtube' },
 ];
 
 export const FOOTER_LINKS = [

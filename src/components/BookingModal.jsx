@@ -42,16 +42,19 @@ export default function BookingModal({ isOpen, onClose }) {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed inset-4 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[201] sm:w-full sm:max-w-md glass-card rounded-3xl p-6 sm:p-8 overflow-y-auto max-h-[90vh]"
+            className="fixed inset-x-2 top-[max(0.5rem,env(safe-area-inset-top))] bottom-2 sm2:inset-4 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[201] w-auto sm:w-full sm:max-w-md glass-card rounded-2xl sm2:rounded-3xl p-3 sm2:p-5 sm:p-8 overflow-y-auto max-h-[calc(100dvh-1rem)] sm:max-h-[94vh] min-w-0"
           >
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h3 className="font-display text-2xl font-semibold text-cream">Reserve Your Stay</h3>
-                <p className="text-sm text-muted mt-1">Red Sort Resort — luxury awaits</p>
+            <div className="flex items-start justify-between gap-3 mb-5 xs:mb-6 min-w-0">
+              <div className="min-w-0 pr-2">
+                <h3 className="font-display text-xl xs:text-2xl font-semibold text-cream leading-tight">
+                  Reserve Your Stay
+                </h3>
+                <p className="text-xs xs:text-sm text-muted mt-1">Red Fort Resort — luxury awaits</p>
               </div>
               <button
+                type="button"
                 onClick={onClose}
-                className="w-9 h-9 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
+                className="w-9 h-9 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10 shrink-0"
                 aria-label="Close"
               >
                 <IconMap name="X" size={18} />
@@ -59,22 +62,22 @@ export default function BookingModal({ isOpen, onClose }) {
             </div>
 
             {submitted ? (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-8">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-6 xs:py-8">
+                <div className="w-14 h-14 xs:w-16 xs:h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
                   <IconMap name="Calendar" size={28} className="text-secondary" />
                 </div>
-                <p className="text-lg text-cream">Booking request received!</p>
+                <p className="text-base xs:text-lg text-cream">Booking request received!</p>
                 <p className="text-sm text-muted mt-2">Our concierge will contact you shortly.</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3 xs:space-y-4">
                 <input
                   name="name"
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Full Name"
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream placeholder:text-muted focus:outline-none focus:border-secondary/50 text-sm"
+                  className="w-full min-w-0 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream placeholder:text-muted focus:outline-none focus:border-secondary/50 text-sm"
                 />
                 <input
                   name="email"
@@ -83,10 +86,10 @@ export default function BookingModal({ isOpen, onClose }) {
                   onChange={handleChange}
                   placeholder="Email Address"
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream placeholder:text-muted focus:outline-none focus:border-secondary/50 text-sm"
+                  className="w-full min-w-0 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream placeholder:text-muted focus:outline-none focus:border-secondary/50 text-sm"
                 />
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
+                <div className="grid grid-cols-1 sm3:grid-cols-2 gap-3">
+                  <div className="min-w-0">
                     <label className="text-xs text-muted mb-1 block">Check-in</label>
                     <input
                       name="checkIn"
@@ -94,10 +97,10 @@ export default function BookingModal({ isOpen, onClose }) {
                       value={form.checkIn}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50"
+                      className="w-full min-w-0 px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50"
                     />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <label className="text-xs text-muted mb-1 block">Check-out</label>
                     <input
                       name="checkOut"
@@ -105,11 +108,11 @@ export default function BookingModal({ isOpen, onClose }) {
                       value={form.checkOut}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50"
+                      className="w-full min-w-0 px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50"
                     />
                   </div>
                 </div>
-                <div className="relative">
+                <div className="relative min-w-0">
                   <IconMap
                     name="Users"
                     size={16}
@@ -119,7 +122,7 @@ export default function BookingModal({ isOpen, onClose }) {
                     name="guests"
                     value={form.guests}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50 appearance-none"
+                    className="w-full min-w-0 pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50 appearance-none"
                   >
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <option key={n} value={n} className="bg-dark">

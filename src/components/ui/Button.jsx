@@ -17,17 +17,19 @@ export default function Button({
   onClick,
   type = 'button',
   href,
+  disabled,
   ...props
 }) {
-  const classes = `inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-300 ${variants[variant]} ${className}`;
+  const classes = `inline-flex items-center justify-center gap-1.5 sm2:gap-2 max-w-full px-3 py-2 sm2:px-5 sm2:py-3 sm:px-6 sm:py-3 rounded-full text-[11px] sm2:text-sm font-medium tracking-normal sm2:tracking-wide transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none disabled:scale-100 ${variants[variant]} ${className}`;
 
   if (href) {
     return (
       <motion.a
         href={href}
         className={classes}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={disabled ? undefined : { scale: 1.03 }}
+        whileTap={disabled ? undefined : { scale: 0.98 }}
+        aria-disabled={disabled}
         {...props}
       >
         {children}
@@ -40,8 +42,9 @@ export default function Button({
       type={type}
       className={classes}
       onClick={onClick}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
+      disabled={disabled}
+      whileHover={disabled ? undefined : { scale: 1.03 }}
+      whileTap={disabled ? undefined : { scale: 0.98 }}
       {...props}
     >
       {children}

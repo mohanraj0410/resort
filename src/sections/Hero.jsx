@@ -4,7 +4,7 @@ import IconMap from '../components/ui/IconMap';
 import { HERO_SLIDES } from '../utils/constants';
 import Button from '../components/ui/Button';
 
-export default function Hero({ onBookNow }) {
+export default function Hero() {
   const [current, setCurrent] = useState(0);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 600], [0, 200]);
@@ -18,7 +18,10 @@ export default function Hero({ onBookNow }) {
   }, []);
 
   return (
-    <section id="home" className="relative h-screen min-h-[600px] overflow-hidden">
+    <section
+      id="home"
+      className="relative h-[100dvh] min-h-[480px] max-h-[900px] sm:min-h-[560px] md:min-h-[600px] overflow-hidden w-full"
+    >
       <motion.div className="absolute inset-0" style={{ y }}>
         {HERO_SLIDES.map((slide, i) => (
           <motion.div
@@ -41,27 +44,15 @@ export default function Hero({ onBookNow }) {
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent" />
       </motion.div>
 
-      {/* Floating elements */}
       <motion.div
-        className="absolute top-1/4 left-[10%] w-20 h-20 rounded-full border border-secondary/20 hidden md:block"
-        animate={{ y: [0, -20, 0], rotate: [0, 180, 360] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-1/3 right-[15%] w-12 h-12 rounded-full bg-secondary/10 hidden lg:block"
-        animate={{ y: [0, 15, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      <motion.div
-        className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6"
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center w-full max-w-full section-container !px-3 sm2:!px-5"
         style={{ opacity }}
       >
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-xs sm:text-sm tracking-[0.3em] uppercase text-secondary mb-4"
+          className="label-track text-[9px] sm2:text-xs sm:text-sm uppercase text-secondary mb-2 sm2:mb-4 max-w-full"
         >
           Welcome to Paradise
         </motion.span>
@@ -70,7 +61,7 @@ export default function Hero({ onBookNow }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-cream max-w-4xl leading-[1.1]"
+          className="heading-balance font-display text-[1.45rem] sm2:text-[1.85rem] sm3:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-semibold text-cream w-full max-w-full sm2:max-w-lg sm:max-w-2xl md:max-w-4xl"
         >
           Where <span className="text-gradient-gold italic">Luxury</span> Meets
           <br />
@@ -81,7 +72,7 @@ export default function Hero({ onBookNow }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="mt-6 text-base sm:text-lg md:text-xl text-cream/80 max-w-xl leading-relaxed"
+          className="mt-3 sm2:mt-6 text-[13px] sm2:text-base sm:text-lg md:text-xl text-cream/80 w-full max-w-full sm2:max-w-md md:max-w-xl leading-relaxed"
         >
           Escape to an exclusive hillside sanctuary crafted for unforgettable moments and timeless elegance.
         </motion.p>
@@ -90,24 +81,21 @@ export default function Hero({ onBookNow }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
-          className="flex flex-col sm:flex-row gap-4 mt-10"
+          className="flex flex-col sm2:flex-row gap-3 mt-6 sm2:mt-10 w-full max-w-full sm2:max-w-none justify-center"
         >
-          <Button variant="secondary" onClick={onBookNow}>
-            Book Now
-          </Button>
-          <Button variant="outline" href="#about">
+          <Button variant="outline" href="#about" className="w-full sm2:w-auto max-w-full">
             Explore Resort
           </Button>
         </motion.div>
 
-        {/* Slide indicators */}
-        <div className="absolute bottom-28 flex gap-2">
+        <div className="absolute bottom-[4.75rem] sm2:bottom-28 sm:bottom-32 flex gap-1.5 sm2:gap-2">
           {HERO_SLIDES.map((_, i) => (
             <button
               key={i}
+              type="button"
               onClick={() => setCurrent(i)}
               className={`h-1 rounded-full transition-all duration-300 ${
-                i === current ? 'w-8 bg-secondary' : 'w-4 bg-white/30'
+                i === current ? 'w-6 sm2:w-8 bg-secondary' : 'w-2.5 sm2:w-4 bg-white/30'
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -117,12 +105,12 @@ export default function Hero({ onBookNow }) {
 
       <motion.a
         href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/60 hover:text-secondary transition-colors"
+        className="absolute bottom-4 sm2:bottom-8 left-1/2 -translate-x-1/2 text-cream/60 hover:text-secondary transition-colors safe-bottom z-10"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         aria-label="Scroll down"
       >
-        <IconMap name="ChevronDown" size={28} />
+        <IconMap name="ChevronDown" size={22} />
       </motion.a>
 
       <style>{`

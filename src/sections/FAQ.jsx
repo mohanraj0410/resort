@@ -6,13 +6,14 @@ import IconMap from '../components/ui/IconMap';
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
-    <div className="border-b border-white/10 last:border-0">
+    <div className="border-b border-white/10 last:border-0 min-w-0">
       <button
+        type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left group"
+        className="w-full flex items-start xs:items-center justify-between gap-3 xs:gap-4 py-4 xs:py-5 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="text-cream font-medium group-hover:text-secondary transition-colors pr-4">
+        <span className="text-[13px] sm2:text-base text-cream font-medium group-hover:text-secondary transition-colors pr-2 min-w-0 break-words text-left">
           {item.q}
         </span>
         <span className="w-8 h-8 rounded-full glass flex items-center justify-center shrink-0 text-secondary">
@@ -28,7 +29,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-cream/60 leading-relaxed">{item.a}</p>
+            <p className="pb-4 xs:pb-5 text-sm text-cream/60 leading-relaxed">{item.a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -40,19 +41,19 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="section-padding bg-dark-soft">
+    <section id="faq" className="section-padding bg-dark-soft overflow-hidden w-full">
       <div className="section-container max-w-3xl">
         <SectionHeading
           label="FAQ"
           title="Frequently Asked Questions"
-          subtitle="Everything you need to know before your stay at Red Sort Resort."
+          subtitle="Everything you need to know before your stay at Red Fort Resort."
         />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card rounded-3xl px-6 md:px-8"
+          className="glass-card rounded-2xl sm2:rounded-3xl px-2.5 sm2:px-4 sm:px-6 md:px-8 min-w-0"
         >
           {FAQS.map((item, i) => (
             <AccordionItem

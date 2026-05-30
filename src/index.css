@@ -11,15 +11,34 @@
   --color-muted: #9a8f87;
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "Outfit", system-ui, sans-serif;
+
+  /* Design breakpoints: 320 / 375 / 425 / 768 / 1024 / 1440+ */
+  --breakpoint-xs: 20rem; /* 320px */
+  --breakpoint-sm2: 23.4375rem; /* 375px */
+  --breakpoint-sm3: 26.5625rem; /* 425px */
+  --breakpoint-3xl: 90rem; /* 1440px */
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-dark text-cream font-body antialiased overflow-x-hidden;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
   }
 
   ::selection {
@@ -45,11 +64,24 @@
   }
 
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32;
+    @apply py-12 sm2:py-16 sm:py-20 md:py-24 lg:py-28 3xl:py-32;
   }
 
   .section-container {
-    @apply max-w-7xl mx-auto w-full;
+    @apply max-w-7xl mx-auto w-full min-w-0 px-3 sm2:px-5 sm3:px-6 sm:px-8 md:px-10 lg:px-12 3xl:max-w-[85rem];
+  }
+
+  /* 320px-safe heading & label helpers */
+  .heading-balance {
+    @apply text-balance break-words hyphens-auto;
+  }
+
+  .label-track {
+    @apply tracking-[0.12em] sm2:tracking-[0.2em] sm:tracking-[0.25em];
+  }
+
+  .section-container-inset {
+    @apply max-w-7xl mx-auto w-full min-w-0;
   }
 
   .hero-gradient {
@@ -59,6 +91,10 @@
       rgba(161, 13, 13, 0.15) 40%,
       rgba(15, 10, 8, 0.85) 100%
     );
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   }
 
   .whatsapp-pulse {

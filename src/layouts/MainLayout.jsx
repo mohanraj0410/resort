@@ -5,24 +5,22 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import PageLoader from '../components/layout/PageLoader';
-import ScrollProgress from '../components/layout/ScrollProgress';
 import BackToTop from '../components/layout/BackToTop';
 import WhatsAppFloat from '../components/layout/WhatsAppFloat';
-import BookingModal from '../components/BookingModal';
+// import BookingModal from '../components/BookingModal';
 import { pageTransition } from '../animations/variants';
 
 export default function MainLayout() {
   const [loading, setLoading] = useState(true);
-  const [bookingOpen, setBookingOpen] = useState(false);
+  // const [bookingOpen, setBookingOpen] = useState(false);
   const location = useLocation();
 
-  const openBooking = () => setBookingOpen(true);
+  // const openBooking = () => setBookingOpen(true);
 
   return (
     <>
       {loading && <PageLoader onComplete={() => setLoading(false)} />}
-      <ScrollProgress />
-      <Navbar onBookNow={openBooking} />
+      <Navbar  />
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
@@ -30,14 +28,15 @@ export default function MainLayout() {
           animate="animate"
           exit="exit"
           variants={pageTransition}
+          className="w-full max-w-[100vw] overflow-x-clip"
         >
-          <Outlet context={{ onBookNow: openBooking }} />
+          <Outlet />
         </motion.main>
       </AnimatePresence>
       <Footer />
       <BackToTop />
       <WhatsAppFloat />
-      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
+      {/* <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} /> */}
     </>
   );
 }

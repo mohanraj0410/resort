@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
 import { RESORT, SOCIAL_LINKS } from '../utils/constants';
 import { validateContactForm } from '../utils/validators';
+import { sendEnquiry } from '../utils/sendEnquiry';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
 import Logo from '../components/ui/Logo';
@@ -15,6 +16,8 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,16 +25,29 @@ export default function Contact() {
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validateContactForm(form);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-    setSubmitted(true);
-    setForm(initialForm);
-    setTimeout(() => setSubmitted(false), 4000);
+
+    setLoading(true);
+    setSubmitError('');
+
+    try {
+      await sendEnquiry(form);
+      setSubmitted(true);
+      setForm(initialForm);
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch {
+      setSubmitError(
+        'Could not send your message. Please try WhatsApp or email us directly.'
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass = (field) =>
@@ -40,7 +56,7 @@ export default function Contact() {
     }`;
 
   return (
-    <section id="contact" className="section-padding bg-dark-soft">
+    <section id="contact" className="section-padding bg-dark-soft overflow-hidden">
       <div className="section-container">
         <SectionHeading
           label="Contact"
@@ -48,7 +64,7 @@ export default function Contact() {
           subtitle="Our concierge team is ready to assist with reservations, events, and special requests."
         />
 
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-6 sm2:gap-10 lg:gap-16 min-w-0">
           <motion.div
             variants={slideInLeft}
             initial="hidden"
@@ -59,7 +75,7 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="glass-card rounded-3xl p-10 text-center"
+                className="glass-card rounded-2xl xs:rounded-3xl p-8 xs:p-10 text-center min-w-0"
               >
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
                   <IconMap name="Send" size={28} className="text-secondary" />
@@ -68,7 +84,7 @@ export default function Contact() {
                 <p className="text-muted mt-2 text-sm">We&apos;ll get back to you within 24 hours.</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 glass-card rounded-3xl p-6 md:p-8">
+              <form onSubmit={handleSubmit} className="space-y-3 sm2:space-y-4 glass-card rounded-2xl sm2:rounded-3xl p-3 sm2:p-5 sm:p-6 md:p-8 min-w-0">
                 <div>
                   <input
                     name="name"
@@ -111,9 +127,12 @@ export default function Contact() {
                   />
                   {errors.message && <p className="text-primary-light text-xs mt-1">{errors.message}</p>}
                 </div>
-                <Button type="submit" variant="secondary" className="w-full">
+                {submitError && (
+                  <p className="text-primary-light text-sm text-center">{submitError}</p>
+                )}
+                <Button type="submit" variant="secondary" className="w-full" disabled={loading}>
                   <IconMap name="Send" size={16} />
-                  Send Message
+                  {loading ? 'Sending…' : 'Send Message'}
                 </Button>
               </form>
             )}
@@ -124,9 +143,9 @@ export default function Contact() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-center min-w-0"
           >
-            <div className="glass-card rounded-3xl p-6 md:p-8 mb-6 text-center sm:text-left">
+            <div className="glass-card rounded-2xl xs:rounded-3xl p-4 xs:p-5 sm:p-6 md:p-8 mb-5 xs:mb-6 text-center sm:text-left min-w-0">
               <Logo size="lg" className="justify-center sm:justify-start mb-6" />
               <h3 className="font-display text-xl font-semibold text-cream mb-2">{RESORT.name}</h3>
               <p className="text-sm text-muted mb-6 leading-relaxed">
@@ -139,8 +158,8 @@ export default function Contact() {
             </div>
 
             <div>
-              <p className="text-sm text-muted mb-4">Follow us on social media</p>
-              <div className="flex gap-3">
+              <p className="text-sm text-muted mb-4 text-center sm:text-left">Follow us on social media</p>
+              <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
                 {SOCIAL_LINKS.map((s) => (
                   <a
                     key={s.platform}
