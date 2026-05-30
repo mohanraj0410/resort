@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS } from '../../utils/constants';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
-import Logo from '../ui/Logo';
+import logo from '../../assets/logo.png';
 import IconMap from '../ui/IconMap';
 
 export default function Navbar() {
@@ -32,12 +32,16 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full max-w-[100vw] ${navBg}`}>
       <nav className="section-container flex items-center justify-between gap-1.5 sm2:gap-2 h-14 sm2:h-16 md:h-20 min-w-0">
-        <a href="#home" className="group flex items-center gap-1 sm2:gap-2 min-w-0 flex-1 overflow-hidden">
-          <div className="p-0.5 sm2:p-1.5 rounded-full bg-white/[0.04] border border-secondary/15 group-hover:border-secondary/30 transition-all duration-300 backdrop-blur-md shadow-inner shrink-0">
-            <Logo size="sm" className="group-hover:opacity-90 transition-opacity" />
+        <a href="#home" className="group flex items-center gap-1.5 sm2:gap-2 min-w-0 flex-1 overflow-hidden">
+          <div className="p-0.5 sm2:p-1 md:p-1.5 rounded-full bg-white/[0.04] border border-secondary/15 group-hover:border-secondary/30 transition-all duration-300 backdrop-blur-md shadow-inner shrink-0">
+            <img
+              src={logo}
+              alt="Red Fort Resort Logo"
+              className="w-8 h-8 sm2:w-9 sm2:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 object-contain rounded-lg sm2:rounded-xl"
+            />
           </div>
           <div className="flex flex-col leading-tight min-w-0 overflow-hidden">
-            <span className="text-xs sm2:text-base md:text-lg font-display font-bold tracking-wide sm2:tracking-wider text-gradient-gold truncate">
+            <span className="text-xs sm2:text-sm md:text-base lg:text-lg font-display font-bold tracking-wide sm2:tracking-wider text-gradient-gold truncate">
               Red Fort
             </span>
             <span className="sm2:block text-[8px] md:text-[9.5px] tracking-[0.15em] uppercase text-muted font-medium truncate">

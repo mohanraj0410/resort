@@ -1,3 +1,10 @@
+import outlook from '../assets/outlook.webp';
+import room1 from '../assets/room1.webp';
+import room2 from '../assets/room2.webp';
+import room3 from '../assets/room3.webp';
+import room4 from '../assets/room4.webp';
+import room5 from '../assets/room5.webp';
+
 export const RESORT = {
   name: 'Red Fort Resort',
   shortName: 'Red Fort',
@@ -6,7 +13,7 @@ export const RESORT = {
   email: 'hello@redfort.com',
   whatsapp: '919894511911',
   whatsappUrl: 'https://wa.me/919894511911',
-  address: '112,Vellimedu Via ,Siruvani mainroad, Alandurai, Coimbatore- 641101',
+  address: 'High school, 112, Vellimedu Via, Siruvani Main Rd, Alanthurai, Coimbatore, Tamil Nadu - 641101',
   mapEmbed:
     "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d930.8093314137143!2d76.8088344!3d10.95962!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8674cdab52a1f%3A0xaa41d2285b6313be!2sRed%20Fort%20Resort!5e1!3m2!1sen!2sin!4v1780147975020!5m2!1sen!2sin",
   directionsUrl: 'https://maps.google.com/?q=Red+Fort+Resort',
@@ -23,16 +30,24 @@ export const NAV_LINKS = [
 
 export const HERO_SLIDES = [
   {
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80',
-    alt: 'Red Fort Resort pool at sunset',
+    image: outlook,
+    alt: 'Red Fort Resort pool and hillside outlook',
   },
   {
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80',
-    alt: 'Premium resort suite interior',
+    image: room1,
+    alt: 'Premium heritage suite interior',
+  },
+];
+
+/** Our Story section — local resort photography */
+export const ABOUT_IMAGES = [
+  {
+    src: outlook,
+    alt: 'Red Fort Resort nestled in the Siruvani hills',
   },
   {
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3d4?w=1920&q=80',
-    alt: 'Resort overlooking tropical hills',
+    src: room2,
+    alt: 'Luxury room with heritage brick interiors',
   },
 ];
 
@@ -58,18 +73,18 @@ export const AMENITIES = [
 export const GALLERY_CATEGORIES = ['All', 'Rooms', 'Dining', 'Pool', 'Nature', 'Events'];
 
 export const GALLERY_IMAGES = [
-  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80', category: 'Rooms', alt: 'Luxury suite' },
-  { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining', alt: 'Fine dining' },
-  { src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80', category: 'Pool', alt: 'Resort pool' },
-  { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80', category: 'Nature', alt: 'Mountain vista' },
-  { src: 'https://images.unsplash.com/photo-1519167758481-83f29da8c2b4?w=800&q=80', category: 'Events', alt: 'Wedding setup' },
-  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', category: 'Rooms', alt: 'Bedroom view' },
-  { src: 'https://images.unsplash.com/photo-1540555700478-4be289fbbe4f?w=800&q=80', category: 'Pool', alt: 'Spa area' },
-  { src: 'https://images.unsplash.com/photo-1478131143081-1444e3be27e8?w=800&q=80', category: 'Nature', alt: 'Forest trail' },
-  { src: 'https://images.unsplash.com/photo-1464366400600-7168b8d9bc6f?w=800&q=80', category: 'Events', alt: 'Celebration dinner' },
-  { src: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Rooms', alt: 'Resort bathroom' },
-  { src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80', category: 'Dining', alt: 'Outdoor restaurant' },
-  { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80', category: 'Nature', alt: 'Lake view' },
+  { src: room1, category: 'Rooms', alt: 'Premium guest room with elegant bedding' },
+  { src: room2, category: 'Rooms', alt: 'Heritage brick suite with luxury comforts' },
+  { src: room3, category: 'Rooms', alt: 'Spacious resort bedroom' },
+  { src: room4, category: 'Rooms', alt: 'Deluxe accommodation at Red Fort Resort' },
+  { src: room5, category: 'Rooms', alt: 'Comfortable family-friendly room' },
+  { src: outlook, category: 'Pool', alt: 'Resort pool and scenic outlook' },
+  { src: outlook, category: 'Nature', alt: 'Hillside views near Siruvani' },
+  { src: room4, category: 'Dining', alt: 'In-room dining and lounge space' },
+  { src: room3, category: 'Dining', alt: 'Private dining setup in suite' },
+  { src: room5, category: 'Events', alt: 'Intimate celebration venue' },
+  { src: room1, category: 'Events', alt: 'Elegant space for special occasions' },
+  { src: outlook, category: 'Events', alt: 'Outdoor gatherings with valley views' },
 ];
 
 export const SHORT_VIDEOS = [
@@ -131,88 +146,109 @@ export const UPCOMING_EVENTS = [
 
 export const NEARBY_PLACES = [
   {
-    name: 'Adiyogi Shiva Statue',
-    distance: '24 km',
-    time: '35 min',
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Adiyogi+Shiva+Statue+Coimbatore',
-  },
-  {
-    name: 'Isha Yoga Center',
+    name: 'Isha Yoga Center & Dhyanalinga',
     distance: '25 km',
     time: '36 min',
-    image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&q=80',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Isha_Yoga_center.jpg',
     mapsUrl: 'https://maps.google.com/?q=Isha+Yoga+Center+Coimbatore',
   },
   {
     name: 'Kovai Kutralam Falls',
     distance: '28 km',
     time: '45 min',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Kovai+Kutralam+Falls',
+    image: 'https://images.travelandleisureasia.com/wp-content/uploads/sites/6/2026/01/13125541/kovai-coimbatore.jpeg',
+    mapsUrl: 'https://maps.google.com/?q=Kovai+Kutralam+Falls+Coimbatore',
   },
   {
     name: 'Siruvani Dam',
     distance: '33 km',
     time: '55 min',
-    image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Siruvani+Dam',
+    image: 'https://cf-images.assettype.com/tnm/import/sites/default/files/siruvani3x2.jpg?w=1200&h=900&auto=format%2Ccompress&fit=max&enlarge=true',
+    mapsUrl: 'https://maps.google.com/?q=Siruvani+Dam+Coimbatore',
   },
   {
     name: 'Marudhamalai Temple',
     distance: '18 km',
     time: '30 min',
-    image: 'https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Marudhamalai+Temple',
+    image: 'https://yatramantra.com/wp-content/uploads/2019/08/Marudhamalai_Temple.png',
+    mapsUrl: 'https://maps.google.com/?q=Marudhamalai+Temple+Coimbatore',
   },
   {
-    name: 'VOC Park and Zoo',
-    distance: '22 km',
-    time: '35 min',
-    image: 'https://images.unsplash.com/photo-1511497584788-876760111969?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=VOC+Park+Coimbatore',
+    name: 'Perur Pateeswarar Temple',
+    distance: '9 km',
+    time: '20 min',
+    image: 'https://s7ap1.scene7.com/is/image/incredibleindia/perur-pateeswarar-temple-coimbatore-tamil%20nadu-attr-about?qlt=82&ts=1726654103647',
+    mapsUrl: 'https://maps.google.com/?q=Perur+Pateeswarar+Temple+Coimbatore',
+  },
+  {
+    name: 'Eachanari Vinayagar Temple',
+    distance: '11 km',
+    time: '25 min',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCcTiLfyDpGoIUdZ81QD7SL5eUKaaY96Wh1g&s',
+    mapsUrl: 'https://maps.google.com/?q=Eachanari+Vinayagar+Temple+Coimbatore',
+  },
+  {
+    name: 'Gedee Car Museum',
+    distance: '3 km',
+    time: '10 min',
+    image: 'https://gedeecarmuseum.com/wp-content/uploads/2015/09/bg2.jpg',
+    mapsUrl: 'https://maps.google.com/?q=Gedee+Car+Museum+Coimbatore',
+  },
+  {
+    name: 'Semmozhi Poonga',
+    distance: '18 km',
+    time: '30 min',
+    image: 'https://cf-images.assettype.com/newindianexpress%2F2025-11-25%2F5uoht6xs%2F1_1_semmozhipark8_2511cbe_3.jpg?rect=0%2C69%2C805%2C453',
+    mapsUrl: 'https://maps.google.com/?q=Semmozhi+Poonga+-+Coimbatore,+Tamil+Nadu',
   },
   {
     name: 'Gass Forest Museum',
-    distance: '20 km',
-    time: '32 min',
-    image: 'https://images.unsplash.com/photo-1566127992631-137a642a90f4?w=600&q=80',
+    distance: '4 km',
+    time: '12 min',
+    image: 'https://tnpmcbe.in/images/Forest-Musuem-2.jpg',
     mapsUrl: 'https://maps.google.com/?q=Gass+Forest+Museum+Coimbatore',
   },
   {
     name: 'TNAU Botanical Garden',
-    distance: '18 km',
-    time: '28 min',
+    distance: '6 km',
+    time: '15 min',
     image: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=TNAU+Botanical+Garden',
+    mapsUrl: 'https://maps.google.com/?q=TNAU+Botanical+Garden+Coimbatore',
   },
   {
     name: 'Kovai Kondattam',
-    distance: '17 km',
-    time: '28 min',
-    image: 'https://images.unsplash.com/photo-1538485399081-7c897b1f2f8f?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Kovai+Kondattam',
+    distance: '12 km',
+    time: '25 min',
+    image: 'https://i.ytimg.com/vi/I-O-h7GEel0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAbRNztreujpi96Um_AGWd3AfudcA',
+    mapsUrl: 'https://maps.google.com/?q=Kovai+Kondattam+Coimbatore',
+  },
+  {
+    name: 'Black Thunder Water Theme Park',
+    distance: '40 km',
+    time: '1 hr',
+    image: 'https://d3fphkxyf5o5bm.cloudfront.net/image-resize/format=webp,w=1200/QwRY54Li1HMwD7oNfp5QYlCuL9wn0uryCE2mA2OPQr',
+    mapsUrl: 'https://maps.google.com/?q=Black+Thunder+Theme+Park+Mettupalayam',
   },
   {
     name: 'Monkey Falls',
-    distance: '58 km',
-    time: '1 hr 15 min',
-    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Monkey+Falls+Pollachi',
+    distance: '65 km',
+    time: '1 hr 30 min',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Monkey_falls5.JPG',
+    mapsUrl: 'https://maps.google.com/?q=Monkey+Falls+Coimbatore',
   },
   {
     name: 'Aliyar Dam',
     distance: '62 km',
     time: '1 hr 20 min',
-    image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Aliyar+Dam',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Aliyar-Dam.JPG',
+    mapsUrl: 'https://maps.google.com/?q=Aliyar+Dam+Coimbatore',
   },
   {
     name: 'Valparai Hills',
-    distance: '95 km',
-    time: '2 hr 30 min',
-    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Valparai',
+    distance: '105 km',
+    time: '3 hr',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Valparai_GhatRoad.JPG',
+    mapsUrl: 'https://maps.google.com/?q=Valparai+Hills+Coimbatore',
   }
 ];
 

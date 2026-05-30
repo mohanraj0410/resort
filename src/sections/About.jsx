@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { STATS } from '../utils/constants';
+import { STATS, ABOUT_IMAGES } from '../utils/constants';
 import { useCounter } from '../hooks/useCounter';
 import SectionHeading from '../components/ui/SectionHeading';
 import { staggerContainer, fadeInUp, slideInLeft, slideInRight } from '../animations/variants';
@@ -39,23 +39,23 @@ export default function About() {
           >
             <div className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-3 sm2:gap-4">
               <img
-                src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80"
-                alt="Resort exterior"
+                src={ABOUT_IMAGES[0].src}
+                alt={ABOUT_IMAGES[0].alt}
                 className="rounded-xl xs:rounded-2xl w-full h-36 xs:h-44 sm:h-48 md:h-56 object-cover"
                 loading="lazy"
               />
               <img
-                src="https://images.unsplash.com/photo-1540541338287-4170027deebe?w=600&q=80"
-                alt="Luxury interior"
+                src={ABOUT_IMAGES[1].src}
+                alt={ABOUT_IMAGES[1].alt}
                 className="rounded-xl xs:rounded-2xl w-full h-36 xs:h-44 sm:h-48 md:h-56 object-cover mt-6 xs:mt-8"
                 loading="lazy"
               />
             </div>
             <div className="mt-4 xs:mt-0 xs:absolute xs:-bottom-4 xs:right-0 glass-card rounded-2xl p-3 xs:p-4 inline-block">
-              <p className="font-display text-xl xs:text-2xl text-gradient-gold">18+</p>
-              <p className="text-xs text-muted">Years of Excellence</p>
+              <p className="font-display text-xl xs:text-2xl text-primary">18+</p>
+              <p className="text-xs text-black">Years of Excellence</p>
             </div>
-          </motion.div>
+          </motion.div> 
 
           <motion.div
             variants={slideInRight}

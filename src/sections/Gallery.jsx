@@ -7,19 +7,27 @@ import Skeleton from '../components/ui/Skeleton';
 
 function LazyImage({ src, alt, className, onClick }) {
   const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   return (
-    <div className={`relative overflow-hidden ${className}`} onClick={onClick}>
-      {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        onLoad={() => setLoaded(true)}
-        className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
-          loaded ? 'opacity-100' : 'opacity-0'
-        }`}
-      />
+    <div className={`relative overflow-hidden bg-dark-soft ${className}`} onClick={onClick}>
+      {!loaded && !failed && <Skeleton className="absolute inset-0 rounded-none" />}
+      {failed ? (
+        <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
+          <span className="text-xs text-muted">Image unavailable</span>
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+          onError={() => setFailed(true)}
+          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      )}
     </div>
   );
 }
@@ -65,7 +73,7 @@ export default function Gallery() {
           <AnimatePresence mode="popLayout">
             {filtered.map((img, i) => (
               <motion.div
-                key={`${img.src}-${filter}`}
+                key={`${img.category}-${img.alt}-${i}`}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -110,7 +118,7 @@ export default function Gallery() {
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
-              src={lightbox.src.replace('w=800', 'w=1200')}
+              src={lightbox.src}
               alt={lightbox.alt}
               className="max-w-full max-h-[80vh] xs:max-h-[85vh] object-contain rounded-xl xs:rounded-2xl"
               onClick={(e) => e.stopPropagation()}

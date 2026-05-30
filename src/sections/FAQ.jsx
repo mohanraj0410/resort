@@ -41,7 +41,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="section-padding bg-dark-soft overflow-hidden w-full">
+    <section id="faq" className="section-padding bg-dark overflow-hidden w-full">
       <div className="section-container max-w-3xl">
         <SectionHeading
           label="FAQ"

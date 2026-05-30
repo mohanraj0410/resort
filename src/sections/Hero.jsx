@@ -40,8 +40,7 @@ export default function Hero() {
           </motion.div>
         ))}
         <div className="absolute inset-0 hero-gradient" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-transparent to-dark/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/25 to-dark/50" />
       </motion.div>
 
       <motion.div
@@ -52,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="label-track text-[9px] sm2:text-xs sm:text-sm uppercase text-secondary mb-2 sm2:mb-4 max-w-full"
+          className="label-track text-[9px] sm2:text-xs sm:text-sm uppercase hero-label mb-2 sm2:mb-4 max-w-full"
         >
           Welcome to Paradise
         </motion.span>
@@ -61,18 +60,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="heading-balance font-display text-[1.45rem] sm2:text-[1.85rem] sm3:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-semibold text-cream w-full max-w-full sm2:max-w-lg sm:max-w-2xl md:max-w-4xl"
+          className="heading-balance hero-heading-shadow font-display text-[1.45rem] sm2:text-[1.85rem] sm3:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-semibold text-cream w-full max-w-full sm2:max-w-lg sm:max-w-2xl md:max-w-4xl"
         >
-          Where <span className="text-gradient-gold italic">Luxury</span> Meets
+          Where <span className="hero-label italic" style={{ color: "#c21a12",}}>Luxury</span> Meets
           <br />
-          <span className="text-gradient-red">Nature</span>
+          <span className="hero-text-accent italic">Nature</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="mt-3 sm2:mt-6 text-[13px] sm2:text-base sm:text-lg md:text-xl text-cream/80 w-full max-w-full sm2:max-w-md md:max-w-xl leading-relaxed"
+          className="mt-3 sm2:mt-6 text-[13px] sm2:text-base sm:text-lg md:text-xl hero-body w-full max-w-full sm2:max-w-md md:max-w-xl leading-relaxed"
         >
           Escape to an exclusive hillside sanctuary crafted for unforgettable moments and timeless elegance.
         </motion.p>
@@ -105,7 +104,7 @@ export default function Hero() {
 
       <motion.a
         href="#about"
-        className="absolute bottom-4 sm2:bottom-8 left-1/2 -translate-x-1/2 text-cream/60 hover:text-secondary transition-colors safe-bottom z-10"
+        className="absolute bottom-4 sm2:bottom-8 left-1/2 -translate-x-1/2 text-cream/80 hover:text-secondary-light transition-colors safe-bottom z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         aria-label="Scroll down"
