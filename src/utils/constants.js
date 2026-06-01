@@ -60,10 +60,7 @@ export const STATS = [
 
 export const AMENITIES = [
   { icon: 'Bed', title: 'Luxury Rooms', desc: 'Spacious suites with panoramic valley views and bespoke interiors.' },
-  { icon: 'Waves', title: 'Infinity Pool', desc: 'Heated infinity pool overlooking misty hills at golden hour.' },
-  { icon: 'Sparkles', title: 'Wellness Spa', desc: 'Ayurvedic therapies, aromatherapy, and private treatment suites.' },
   { icon: 'UtensilsCrossed', title: 'Fine Dining', desc: 'Farm-to-table cuisine with curated wine pairings.' },
-  { icon: 'Mountain', title: 'Adventure', desc: 'Trekking, zip-lining, and guided nature expeditions.' },
   { icon: 'Flame', title: 'Campfire Nights', desc: 'Starlit gatherings with live acoustic performances.' },
   { icon: 'Trees', title: 'Nature Views', desc: 'Private balconies framed by tea gardens and waterfalls.' },
   { icon: 'Wifi', title: 'Free WiFi', desc: 'High-speed connectivity across the entire property.' },
