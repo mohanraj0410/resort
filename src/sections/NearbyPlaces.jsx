@@ -25,8 +25,7 @@ export default function NearbyPlaces() {
             <motion.div
               key={place.name}
               variants={fadeInUp}
-              whileHover={{ y: -6 }}
-              className="glass-card rounded-2xl overflow-hidden group min-w-0"
+              className="glass-card rounded-2xl overflow-hidden group min-w-0 transition-transform duration-300 hover:-translate-y-1.5"
             >
               <div className="relative h-36 xs:h-40 overflow-hidden">
                 <img

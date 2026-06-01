@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { SHORT_VIDEOS } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
 import IconMap from '../components/ui/IconMap';
@@ -37,6 +36,7 @@ function VideoCard({ item }) {
           muted
           loop
           playsInline
+          preload="none"
           className="w-full h-full object-cover"
         />
         {!playing && (
@@ -97,7 +97,7 @@ export default function Videos() {
         </div>
       </div>
 
-      <motion.div
+      <div
         ref={scrollRef}
         className="flex gap-3 xs:gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scroll-pl-4 xs:scroll-pl-5 sm:scroll-pl-8 md:scroll-pl-10 lg:scroll-pl-12 pr-4 xs:pr-5 sm:pr-8"
         style={{
@@ -105,16 +105,13 @@ export default function Videos() {
           paddingLeft: 'max(1rem, calc((100% - min(100%, 80rem)) / 2 + 1rem))',
           paddingRight: 'max(1rem, calc((100% - min(100%, 80rem)) / 2 + 1rem))',
         }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
       >
         {SHORT_VIDEOS.map((item) => (
           <div key={item.title} data-video-card>
             <VideoCard item={item} />
           </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

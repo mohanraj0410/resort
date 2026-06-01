@@ -1,24 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useThrottledCallback } from './useThrottledCallback';
 
 export function useScrollSpy(sectionIds, offset = 120) {
   const [activeId, setActiveId] = useState(sectionIds[0] || '');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY + offset;
+  useThrottledCallback(() => {
+    const scrollY = window.scrollY + offset;
+    let nextId = sectionIds[0] || '';
 
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
-        if (el && el.offsetTop <= scrollY) {
-          setActiveId(sectionIds[i]);
-          return;
-        }
+    for (let i = sectionIds.length - 1; i >= 0; i--) {
+      const el = document.getElementById(sectionIds[i]);
+      if (el && el.offsetTop <= scrollY) {
+        nextId = sectionIds[i];
+        break;
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    setActiveId((prev) => (prev === nextId ? prev : nextId));
   }, [sectionIds, offset]);
 
   return activeId;

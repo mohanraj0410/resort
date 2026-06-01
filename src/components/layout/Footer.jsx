@@ -29,8 +29,8 @@ export default function Footer() {
   return (
     <footer className="relative bg-dark-soft overflow-hidden w-full">
       <div className="h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[min(100%,36rem)] h-48 bg-secondary/8 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary/6 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[min(100%,36rem)] h-48 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(198,138,31,0.07) 0%, transparent 70%)' }} />
+      <div className="absolute bottom-0 right-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(161,13,13,0.06) 0%, transparent 70%)' }} />
 
       <div className="section-padding section-padding-bottom-2 relative">
         <div className="section-container section-padding-bottom-2">
@@ -47,18 +47,16 @@ export default function Footer() {
 
               <div className="flex gap-3 mt-6">
                 {SOCIAL_LINKS.map((s) => (
-                  <motion.a
+                  <a
                     key={s.platform}
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ y: -3, scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-full glass flex items-center justify-center text-secondary hover:text-secondary-light hover:border-secondary/30 hover:shadow-[0_0_20px_rgba(198,138,31,0.2)] transition-all duration-300"
+                    className="w-10 h-10 rounded-full glass flex items-center justify-center text-secondary hover:text-secondary-light hover:border-secondary/30 hover:shadow-[0_0_20px_rgba(198,138,31,0.2)] hover:-translate-y-0.5 hover:scale-105 transition-all duration-300"
                     aria-label={s.platform}
                   >
                     <IconMap name={s.icon} size={16} />
-                  </motion.a>
+                  </a>
                 ))}
               </div>
 
@@ -132,7 +130,7 @@ export default function Footer() {
             {/* Newsletter */}
             <div className="lg:col-span-3 min-w-0">
               <div className="glass-card rounded-2xl p-5 sm2:p-6 h-full border-secondary/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-32 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(198,138,31,0.1) 0%, transparent 70%)' }} />
 
                 <FooterHeading>Newsletter</FooterHeading>
                 <p className="text-sm text-cream/60 mb-5 leading-relaxed relative">

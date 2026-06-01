@@ -1,32 +1,37 @@
-// import { useOutletContext } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import Hero from '../sections/Hero';
 import About from '../sections/About';
-import Amenities from '../sections/Amenities';
-import Gallery from '../sections/Gallery';
-import Videos from '../sections/Videos';
-import Events from '../sections/Events';
-import NearbyPlaces from '../sections/NearbyPlaces';
-import MapSection from '../sections/MapSection';
-import FAQ from '../sections/FAQ';
-import Contact from '../sections/Contact';
-import Support from '../sections/Support';
+
+const Amenities = lazy(() => import('../sections/Amenities'));
+const Gallery = lazy(() => import('../sections/Gallery'));
+const Videos = lazy(() => import('../sections/Videos'));
+const Events = lazy(() => import('../sections/Events'));
+const NearbyPlaces = lazy(() => import('../sections/NearbyPlaces'));
+const FAQ = lazy(() => import('../sections/FAQ'));
+const Contact = lazy(() => import('../sections/Contact'));
+const MapSection = lazy(() => import('../sections/MapSection'));
+const Support = lazy(() => import('../sections/Support'));
+
+function SectionFallback() {
+  return <div className="section-padding min-h-[12rem]" aria-hidden />;
+}
 
 export default function Home() {
-  // const { onBookNow } = useOutletContext();
-
   return (
     <>
       <Hero />
       <About />
-      <Amenities />
-      <Gallery />
-      <Videos />
-      <Events />
-      <NearbyPlaces />
-      <FAQ />
-      <Contact />
-      <MapSection />
-      <Support />
+      <Suspense fallback={<SectionFallback />}>
+        <Amenities />
+        <Gallery />
+        <Videos />
+        <Events />
+        <NearbyPlaces />
+        <FAQ />
+        <Contact />
+        <MapSection />
+        <Support />
+      </Suspense>
     </>
   );
 }

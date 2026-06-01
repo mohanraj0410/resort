@@ -11,7 +11,7 @@ export default function SectionHeading({ label, title, subtitle, align = 'center
       variants={fadeInUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
     >
       {label && (
         <span className="label-track inline-flex items-center gap-2 text-[9px] sm2:text-xs md:text-sm font-semibold uppercase text-secondary mb-2 sm2:mb-3">

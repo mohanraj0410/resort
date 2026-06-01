@@ -20,8 +20,8 @@ function StatCard({ label, value, suffix }) {
 
 export default function About() {
   return (
-    <section id="about" className="section-padding bg-dark relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-48 h-48 xs:w-64 sm:w-96 sm:h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="about" className="section-padding bg-dark relative overflow-hidden content-auto">
+      <div className="absolute top-0 right-0 w-48 h-48 xs:w-64 sm:w-96 sm:h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(161,13,13,0.07) 0%, transparent 70%)' }} />
       <div className="section-container relative">
         <SectionHeading
           label="Our Story"

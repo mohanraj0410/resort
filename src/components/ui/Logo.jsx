@@ -64,10 +64,8 @@ export default function Logo({
 
   return (
     <div className={`flex items-center gap-3.5 ${className}`}>
-      <motion.div
-        className={`${sizes[size]} relative select-none`}
-        whileHover={!animated ? { scale: 1.05, filter: 'drop-shadow(0 0 8px rgba(198, 138, 31, 0.5))' } : {}}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
+      <div
+        className={`${sizes[size]} relative select-none transition-transform duration-300 hover:scale-105`}
       >
         <svg
           viewBox="0 0 100 100"
@@ -279,7 +277,7 @@ export default function Logo({
             {...motionProps(drawVariant(1.2, 1.2))}
           />
         </svg>
-      </motion.div>
+      </div>
 
       {showText && (
         <div className={`flex flex-col leading-tight ${isLoader ? 'items-center' : 'items-start'}`}>

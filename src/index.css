@@ -48,11 +48,11 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
   }
 
   .glass-card {
-    @apply bg-white/[0.04] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+    @apply bg-white/[0.06] backdrop-blur-md border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4)];
   }
 
   .text-gradient-gold {
@@ -138,6 +138,69 @@
 
   .safe-bottom {
     padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  section[id]:not(#home) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
+  }
+
+  /* hero-slide-img: opacity crossfade now handled inline via style prop */
+
+  .hero-scroll-cue {
+    animation: hero-bounce 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  /* hero-fade-in removed: using CSS opacity transition on img elements */
+
+  @keyframes hero-bounce {
+    0%,
+    100% {
+      transform: translate(-50%, 0);
+    }
+    50% {
+      transform: translate(-50%, 8px);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Loader ring — CSS only, zero JS re-renders */
+  @keyframes loader-fill {
+    from {
+      stroke-dashoffset: 289;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .hero-slide-img,
+    .hero-scroll-cue,
+    .whatsapp-pulse {
+      animation: none !important;
+    }
   }
 
   .whatsapp-pulse {

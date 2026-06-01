@@ -26,8 +26,7 @@ export default function Amenities() {
             <motion.div
               key={item.title}
               variants={fadeInUp}
-              whileHover={{ y: -6 }}
-              className="group glass-card rounded-2xl p-5 xs:p-6 md:p-8 cursor-default transition-shadow hover:shadow-[0_20px_60px_rgba(161,13,13,0.15)] min-w-0"
+              className="group glass-card rounded-2xl p-5 xs:p-6 md:p-8 cursor-default transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(161,13,13,0.15)] min-w-0"
             >
               <div className="w-11 h-11 xs:w-12 xs:h-12 rounded-xl bg-gradient-to-br from-primary/30 to-secondary/20 flex items-center justify-center mb-4 xs:mb-5 group-hover:scale-110 transition-transform shrink-0">
                 <IconMap name={item.icon} className="w-5 h-5 xs:w-6 xs:h-6 text-secondary" />

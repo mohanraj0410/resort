@@ -13,7 +13,9 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
+    // Passive listener — no duplicate; useScrollSpy already adds its own passive listener
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -26,11 +28,11 @@ export default function Navbar() {
 
   const navBg =
     scrolled || mobileOpen
-      ? 'bg-dark/75 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
-      : 'bg-white/[0.03] backdrop-blur-md border-b border-white/5';
+      ? 'bg-dark/80 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
+      : 'bg-white/[0.03] backdrop-blur-sm border-b border-white/5';
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full max-w-[100vw] ${navBg}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full max-w-[100vw] will-change-transform ${navBg}`}>
       <nav className="section-container flex items-center justify-between gap-1.5 sm2:gap-2 h-14 sm2:h-16 md:h-20 min-w-0">
         <a href="#home" className="group flex items-center gap-1.5 sm2:gap-2 min-w-0 flex-1 overflow-hidden">
           <div className="p-0.5 sm2:p-1 md:p-1.5 rounded-full bg-white/[0.04] border border-secondary/15 group-hover:border-secondary/30 transition-all duration-300 backdrop-blur-md shadow-inner shrink-0">
@@ -87,7 +89,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-dark/95 backdrop-blur-2xl border-b border-white/10 overflow-hidden"
+            className="lg:hidden bg-dark/95 backdrop-blur-md border-b border-white/10 overflow-hidden"
           >
             <ul className="section-container flex flex-col py-3 sm2:py-6 gap-0.5 sm2:gap-2">
               {NAV_LINKS.map((link, i) => (
