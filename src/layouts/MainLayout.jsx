@@ -9,7 +9,7 @@ import WhatsAppFloat from '../components/layout/WhatsAppFloat';
 export default function MainLayout() {
   const [loading, setLoading] = useState(true);
   
-
+  
   return (
     <>
       {loading && <PageLoader onComplete={() => setLoading(false)} />}

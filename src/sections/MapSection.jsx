@@ -7,7 +7,7 @@ import { slideInLeft, slideInRight } from '../animations/variants';
 
 export default function MapSection() {
   return (
-    <section id="location" className="section-padding bg-dark overflow-hidden">
+    <section id="location" className="section-padding bg-dark-soft overflow-hidden">
       <div className="section-container">
         <SectionHeading
           label="Find Us"

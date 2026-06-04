@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-dark-soft overflow-hidden w-full">
+    <footer className="relative bg-dark overflow-hidden w-full">
       <div className="h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
       <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[min(100%,36rem)] h-48 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(198,138,31,0.07) 0%, transparent 70%)' }} />
       <div className="absolute bottom-0 right-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(161,13,13,0.06) 0%, transparent 70%)' }} />
