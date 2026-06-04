@@ -28,8 +28,8 @@ export default function Home() {
         <Events />
         <NearbyPlaces />
         <FAQ />
-        <Contact />
         <MapSection />
+        <Contact />
         <Support />
       </Suspense>
     </>

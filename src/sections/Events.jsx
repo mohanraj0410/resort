@@ -47,39 +47,6 @@ export default function Events() {
             </motion.div>
           ))}
         </motion.div>
-
-        <div className="glass-card rounded-2xl xs:rounded-3xl p-4 xs:p-5 sm:p-8 md:p-10 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 xs:gap-3 mb-6 xs:mb-8">
-            <IconMap name="Calendar" size={22} className="text-secondary shrink-0" />
-            <h3 className="font-display text-xl xs:text-2xl font-semibold text-cream">Upcoming Events</h3>
-          </div>
-          <div className="space-y-0">
-            {UPCOMING_EVENTS.map((event, i) => (
-              <motion.div
-                key={event.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col sm3:flex-row sm3:items-center gap-2 xs:gap-3 sm3:gap-6 py-4 xs:py-5 border-b border-white/10 last:border-0 min-w-0"
-              >
-                <div className="flex items-center gap-3 xs:gap-4 sm3:w-32 shrink-0">
-                  <span className="text-xl xs:text-2xl font-display text-gradient-gold font-semibold">
-                    {event.date.split(' ')[0]}
-                  </span>
-                  <span className="text-xs xs:text-sm text-muted uppercase">{event.date.split(' ')[1]}</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-sm xs:text-base text-cream font-medium">{event.title}</h4>
-                  <span className="text-xs text-secondary tracking-wide uppercase mt-1 inline-block">
-                    {event.type}
-                  </span>
-                </div>
-                <div className="hidden sm3:block w-2 h-2 rounded-full bg-secondary shrink-0" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

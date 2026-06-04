@@ -56,7 +56,7 @@ export default function Contact() {
     }`;
 
   return (
-    <section id="contact" className="section-padding bg-dark-soft overflow-hidden">
+    <section id="contact" className="section-padding bg-dark overflow-hidden">
       <div className="section-container">
         <SectionHeading
           label="Contact"

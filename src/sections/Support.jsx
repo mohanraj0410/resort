@@ -27,7 +27,7 @@ const SUPPORT_ACTIONS = [
 
 export default function Support() {
   return (
-    <section id="support" className="section-padding bg-dark overflow-hidden">
+    <section id="support" className="section-padding bg-dark-soft overflow-hidden">
       <div className="section-container">
         <motion.div
           variants={staggerContainer}
