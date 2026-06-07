@@ -6,8 +6,8 @@ import { staggerContainer, fadeInUp } from '../animations/variants';
 
 export default function Amenities() {
   return (
-    <section id="amenities" className="section-padding bg-dark-soft relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-secondary/5 pointer-events-none" />
+    <section id="amenities" className="section-padding bg-dark relative overflow-hidden">
+      <div className="absolute inset-0 from-primary/5 via-transparent to-secondary/5 pointer-events-none" />
       <div className="section-container relative">
         <SectionHeading
           label="Amenities"

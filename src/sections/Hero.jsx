@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import IconMap from '../components/ui/IconMap';
-import { HERO_SLIDES } from '../utils/constants';
-import Button from '../components/ui/Button';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import IconMap from "../components/ui/IconMap";
+import { HERO_SLIDES } from "../utils/constants";
+import Button from "../components/ui/Button";
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -26,9 +26,9 @@ export default function Hero() {
             key={slide.image}
             src={slide.image}
             alt={slide.alt}
-            fetchPriority={i === 0 ? 'high' : 'low'}
-            decoding={i === 0 ? 'sync' : 'async'}
-            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchPriority={i === 0 ? "high" : "low"}
+            decoding={i === 0 ? "sync" : "async"}
+            loading={i === 0 ? "eager" : "lazy"}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
             style={{ opacity: i === current ? 1 : 0 }}
           />
@@ -51,9 +51,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.55 }}
-          className="heading-balance hero-heading-shadow font-display text-[1.45rem] sm2:text-[1.85rem] sm3:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-semibold text-cream w-full max-w-full sm2:max-w-lg sm:max-w-2xl md:max-w-4xl"
+          className="heading-balance font-display text-[1.45rem] sm2:text-[1.85rem] sm3:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-semibold text-cream w-full max-w-full sm2:max-w-lg sm:max-w-2xl md:max-w-4xl"
         >
-          Where <span className="hero-label italic" style={{ color: '#c21a12' }}>Luxury</span> Meets
+          Where{" "}
+          <span className="hero-label italic" style={{ color: "#c21a12" }}>
+            Luxury
+          </span>{" "}
+          Meets
           <br />
           <span className="hero-text-accent italic">Nature</span>
         </motion.h1>
@@ -64,7 +68,8 @@ export default function Hero() {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="mt-3 sm2:mt-6 text-[13px] sm2:text-base sm:text-lg md:text-xl hero-body w-full max-w-full sm2:max-w-md md:max-w-xl leading-relaxed"
         >
-          Escape to an exclusive hillside sanctuary crafted for unforgettable moments and timeless elegance.
+          Escape to an exclusive hillside sanctuary crafted for unforgettable
+          moments and timeless elegance.
         </motion.p>
 
         <motion.div
@@ -73,7 +78,11 @@ export default function Hero() {
           transition={{ delay: 0.65, duration: 0.5 }}
           className="flex flex-col sm2:flex-row gap-3 mt-6 sm2:mt-10 w-full max-w-full sm2:max-w-none justify-center"
         >
-          <Button variant="outline" href="#about" className="w-full sm2:w-auto max-w-full">
+          <Button
+            variant="outline"
+            href="#about"
+            className="w-full sm2:w-auto max-w-full bg-primary hero-btn"
+          >
             Explore Resort
           </Button>
         </motion.div>
@@ -85,7 +94,9 @@ export default function Hero() {
               type="button"
               onClick={() => setCurrent(i)}
               className={`h-1 rounded-full transition-all duration-300 ${
-                i === current ? 'w-6 sm2:w-8 bg-secondary' : 'w-2.5 sm2:w-4 bg-white/30'
+                i === current
+                  ? "w-6 sm2:w-8 bg-secondary"
+                  : "w-2.5 sm2:w-4 bg-white/30"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />

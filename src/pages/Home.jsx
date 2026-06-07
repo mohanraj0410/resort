@@ -20,10 +20,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Gallery />
       <About />
       <Suspense fallback={<SectionFallback />}>
         <Amenities />
-        <Gallery />
         <Videos />
         <Events />
         <NearbyPlaces />

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS } from '../../utils/constants';
-import { useScrollSpy } from '../../hooks/useScrollSpy';
-import logo from '../../assets/logo.png';
-import IconMap from '../ui/IconMap';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { NAV_LINKS } from "../../utils/constants";
+import { useScrollSpy } from "../../hooks/useScrollSpy";
+import logo from "../../assets/logo.png";
+import IconMap from "../ui/IconMap";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,27 +14,37 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     // Passive listener — no duplicate; useScrollSpy already adds its own passive listener
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [mobileOpen]);
 
   const navBg =
     scrolled || mobileOpen
-      ? 'bg-dark/80 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
-      : 'bg-white/[0.03] backdrop-blur-sm border-b border-white/5';
+      ? "bg-dark/80 backdrop-blur-md border-b border-border shadow-[0_6px_18px_rgba(45,34,24,0.06)]"
+      : "bg-transparent backdrop-blur-sm border-b border-transparent";
+
+      const txtBg =
+      scrolled || mobileOpen
+        ? "text-gradient-gold "
+        : "text-white shadow-[0_6px_18px_rgba(45,34,24,0.06)]";
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full max-w-[100vw] will-change-transform ${navBg}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full max-w-[100vw] will-change-transform ${navBg}`}
+    >
       <nav className="section-container flex items-center justify-between gap-1.5 sm2:gap-2 h-14 sm2:h-16 md:h-20 min-w-0">
-        <a href="#home" className="group flex items-center gap-1.5 sm2:gap-2 min-w-0 flex-1 overflow-hidden">
+        <a
+          href="#home"
+          className="group flex items-center gap-1.5 sm2:gap-2 min-w-0 flex-1 overflow-hidden"
+        >
           <div className="p-0.5 sm2:p-1 md:p-1.5 rounded-full bg-white/[0.04] border border-secondary/15 group-hover:border-secondary/30 transition-all duration-300 backdrop-blur-md shadow-inner shrink-0">
             <img
               src={logo}
@@ -43,10 +53,10 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col leading-tight min-w-0 overflow-hidden">
-            <span className="text-xs sm2:text-sm md:text-base lg:text-lg font-display font-bold tracking-wide sm2:tracking-wider text-gradient-gold truncate">
+            <span className={`text-xs sm2:text-sm md:text-base lg:text-lg font-display font-bold tracking-wide sm2:tracking-wider truncate ${txtBg}`}>
               Red Fort
             </span>
-            <span className="sm2:block text-[8px] md:text-[9.5px] tracking-[0.15em] uppercase text-muted font-medium truncate">
+            <span className="sm2:block text-[8px] md:text-[9.5px] tracking-[0.15em] uppercase text-primary font-medium truncate">
               Resort
             </span>
           </div>
@@ -58,7 +68,11 @@ export default function Navbar() {
               <a
                 href={link.href}
                 className={`text-sm tracking-wide transition-colors relative py-1 whitespace-nowrap ${
-                  activeId === link.id ? 'text-secondary' : 'text-cream/80 hover:text-cream'
+                  activeId === link.id
+                    ? "text-secondary"
+                    : scrolled
+                      ? "text-muted hover:text-cream"
+                      : "text-white/80 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -75,11 +89,15 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="lg:hidden w-9 h-9 flex items-center justify-center text-cream rounded-lg hover:bg-white/10 transition-colors shrink-0 -mr-0.5"
+          className={`lg:hidden w-9 h-9 flex items-center justify-center rounded-lg transition-colors shrink-0 -mr-0.5 ${
+            scrolled
+              ? "text-muted hover:bg-white/5"
+              : "text-white/80 hover:bg-white/10"
+          }`}
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
-          <IconMap name={mobileOpen ? 'X' : 'Menu'} size={20} />
+          <IconMap name={mobileOpen ? "X" : "Menu"} size={20} />
         </button>
       </nav>
 
@@ -87,9 +105,9 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-dark/95 backdrop-blur-md border-b border-white/10 overflow-hidden"
+            className="lg:hidden bg-dark/95 backdrop-blur-md border-b border-border overflow-hidden"
           >
             <ul className="section-container flex flex-col py-3 sm2:py-6 gap-0.5 sm2:gap-2">
               {NAV_LINKS.map((link, i) => (
@@ -103,7 +121,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={`block text-[15px] sm:text-lg py-2.5 sm2:py-3 ${
-                      activeId === link.id ? 'text-secondary' : 'text-cream'
+                      activeId === link.id ? "text-secondary" : "text-white"
                     }`}
                   >
                     {link.label}

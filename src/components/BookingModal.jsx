@@ -77,7 +77,7 @@ export default function BookingModal({ isOpen, onClose }) {
                   onChange={handleChange}
                   placeholder="Full Name"
                   required
-                  className="w-full min-w-0 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream placeholder:text-muted focus:outline-none focus:border-secondary/50 text-sm"
+                  className="w-full min-w-0 px-4 py-3 rounded-xl bg-white border border-border text-cream placeholder:text-muted/60 focus:outline-none focus:border-secondary text-sm"
                 />
                 <input
                   name="email"
@@ -86,7 +86,7 @@ export default function BookingModal({ isOpen, onClose }) {
                   onChange={handleChange}
                   placeholder="Email Address"
                   required
-                  className="w-full min-w-0 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream placeholder:text-muted focus:outline-none focus:border-secondary/50 text-sm"
+                  className="w-full min-w-0 px-4 py-3 rounded-xl bg-white border border-border text-cream placeholder:text-muted/60 focus:outline-none focus:border-secondary text-sm"
                 />
                 <div className="grid grid-cols-1 sm3:grid-cols-2 gap-3">
                   <div className="min-w-0">
@@ -97,7 +97,7 @@ export default function BookingModal({ isOpen, onClose }) {
                       value={form.checkIn}
                       onChange={handleChange}
                       required
-                      className="w-full min-w-0 px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50"
+                      className="w-full min-w-0 px-3 py-2.5 rounded-xl bg-white border border-border text-cream text-sm focus:outline-none focus:border-secondary"
                     />
                   </div>
                   <div className="min-w-0">
@@ -108,7 +108,7 @@ export default function BookingModal({ isOpen, onClose }) {
                       value={form.checkOut}
                       onChange={handleChange}
                       required
-                      className="w-full min-w-0 px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50"
+                      className="w-full min-w-0 px-3 py-2.5 rounded-xl bg-white border border-border text-cream text-sm focus:outline-none focus:border-secondary"
                     />
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function BookingModal({ isOpen, onClose }) {
                     name="guests"
                     value={form.guests}
                     onChange={handleChange}
-                    className="w-full min-w-0 pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-cream text-sm focus:outline-none focus:border-secondary/50 appearance-none"
+                    className="w-full min-w-0 pl-10 pr-4 py-3 rounded-xl bg-white border border-border text-cream text-sm focus:outline-none focus:border-secondary appearance-none"
                   >
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <option key={n} value={n} className="bg-dark">
