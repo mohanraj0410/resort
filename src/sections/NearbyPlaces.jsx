@@ -34,7 +34,7 @@ export default function NearbyPlaces() {
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
               <div className="p-4 xs:p-5">
                 <h3 className="font-display text-base xs:text-lg font-semibold text-cream">{place.name}</h3>

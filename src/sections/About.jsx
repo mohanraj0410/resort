@@ -20,13 +20,13 @@ function StatCard({ label, value, suffix }) {
 
 export default function About() {
   return (
-    <section id="about" className="section-padding bg-dark relative overflow-hidden content-auto">
+    <section id="about" className="section-padding bg-dark-soft relative overflow-hidden content-auto">
       <div className="absolute top-0 right-0 w-48 h-48 xs:w-64 sm:w-96 sm:h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(161,13,13,0.07) 0%, transparent 70%)' }} />
       <div className="section-container relative">
         <SectionHeading
           label="Our Story"
           title="A Legacy of Luxury Hospitality"
-          subtitle="Nestled among misty hills and lush tea gardens, Red Fort Resort has been redefining luxury retreats since 2008."
+          subtitle="Nestled among misty hills and lush tea gardens, Red Fort Resort has been redefining luxury retreats since 2019."
         />
 
         <div className="grid lg:grid-cols-2 gap-8 xs:gap-10 lg:gap-16 items-center">
@@ -52,7 +52,7 @@ export default function About() {
               />
             </div>
             <div className="mt-4 xs:mt-0 xs:absolute xs:-bottom-4 xs:right-0 glass-card rounded-2xl p-3 xs:p-4 inline-block">
-              <p className="font-display text-xl xs:text-2xl text-primary">18+</p>
+              <p className="font-display text-xl xs:text-2xl text-primary">7+</p>
               <p className="text-xs text-black">Years of Excellence</p>
             </div>
           </motion.div> 
@@ -74,7 +74,7 @@ export default function About() {
               adventure, or celebration, we curate moments that linger long after you depart.
             </p>
             <ul className="space-y-3">
-              {['Award-winning spa & wellness', 'Michelin-inspired dining', 'Private event venues', 'Eco-conscious luxury'].map(
+              {[ 'Michelin-inspired dining', 'Private event venues', 'Eco-conscious luxury','Valet Parking','Free WiFi'].map(
                 (item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-cream/70">
                     <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0 mt-1.5" />

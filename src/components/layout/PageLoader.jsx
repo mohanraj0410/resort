@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { RESORT } from '../../utils/constants';
 import Logo from '../ui/Logo';
 
-const LOADER_MS = 2200;
+const LOADER_MS = 800;
 
 export default function PageLoader({ onComplete }) {
   const [done, setDone] = useState(false);
@@ -54,7 +54,7 @@ export default function PageLoader({ onComplete }) {
                     cx="50"
                     cy="50"
                     r="46"
-                    stroke="rgba(255, 255, 255, 0.06)"
+                    stroke="rgba(232,221,208,0.6)"
                     strokeWidth="1.2"
                     fill="none"
                   />

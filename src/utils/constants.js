@@ -21,9 +21,9 @@ export const RESORT = {
 
 export const NAV_LINKS = [
   { id: 'home', label: 'Home', href: '#home' },
+  { id: 'gallery', label: 'Gallery', href: '#gallery' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'amenities', label: 'Amenities', href: '#amenities' },
-  { id: 'gallery', label: 'Gallery', href: '#gallery' },
   { id: 'events', label: 'Events', href: '#events' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ];
@@ -53,9 +53,9 @@ export const ABOUT_IMAGES = [
 
 export const STATS = [
   { label: 'Happy Guests', value: 12500, suffix: '+' },
-  { label: 'Luxury Rooms', value: 86, suffix: '' },
-  { label: 'Years of Excellence', value: 18, suffix: '+' },
-  { label: 'Events Hosted', value: 940, suffix: '+' },
+  { label: 'Luxury Rooms', value: 30, suffix: '' },
+  { label: 'Years of Excellence', value: 7, suffix: '+' },
+  { label: 'Events Hosted', value: 124, suffix: '+' },
 ];
 
 export const AMENITIES = [
@@ -67,7 +67,16 @@ export const AMENITIES = [
   { icon: 'Car', title: 'Valet Parking', desc: 'Complimentary valet and EV charging stations.' },
 ];
 
-export const GALLERY_CATEGORIES = ['All', 'Rooms', 'Dining', 'Pool', 'Nature', 'Events'];
+export const GALLERY_CATEGORIES = ['All', 'Rooms', 'Dining', 'Nature', 'Events'];
+
+// export const IMAGES = {
+//   outlook: "https://drive.google.com/uc?export=view&id=FILE_ID_1",
+//   room1: "https://drive.google.com/uc?export=view&id=FILE_ID_2",
+//   room2: "https://drive.google.com/uc?export=view&id=FILE_ID_3",
+//   room3: "https://drive.google.com/uc?export=view&id=FILE_ID_4",
+//   room4: "https://drive.google.com/uc?export=view&id=FILE_ID_5",
+//   room5: "https://drive.google.com/uc?export=view&id=FILE_ID_6",
+// };
 
 export const GALLERY_IMAGES = [
   { src: room1, category: 'Rooms', alt: 'Premium guest room with elegant bedding' },
@@ -75,7 +84,6 @@ export const GALLERY_IMAGES = [
   { src: room3, category: 'Rooms', alt: 'Spacious resort bedroom' },
   { src: room4, category: 'Rooms', alt: 'Deluxe accommodation at Red Fort Resort' },
   { src: room5, category: 'Rooms', alt: 'Comfortable family-friendly room' },
-  { src: outlook, category: 'Pool', alt: 'Resort pool and scenic outlook' },
   { src: outlook, category: 'Nature', alt: 'Hillside views near Siruvani' },
   { src: room4, category: 'Dining', alt: 'In-room dining and lounge space' },
   { src: room3, category: 'Dining', alt: 'Private dining setup in suite' },
@@ -94,11 +102,6 @@ export const SHORT_VIDEOS = [
     title: 'Chef\'s Table Experience',
     poster: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-a-dish-437-large.mp4',
-  },
-  {
-    title: 'Infinity Pool Moments',
-    poster: 'https://images.unsplash.com/photo-1575429198097-0414ec08b8c0?w=600&q=80',
-    video: 'https://assets.mixkit.co/videos/preview/mixkit-swimming-in-a-pool-at-sunset-1270-large.mp4',
   },
   {
     title: 'Forest Trail Adventure',
@@ -268,7 +271,7 @@ export const FAQS = [
   },
   {
     q: 'What dining options are available?',
-    a: 'Guests enjoy our signature restaurant, poolside bar, in-room dining 24/7, and private chef experiences for special occasions.',
+    a: 'Guests enjoy our signature restaurant, in-room dining 24/7, and private chef experiences for special occasions.',
   },
   {
     q: 'Is there a cancellation policy?',

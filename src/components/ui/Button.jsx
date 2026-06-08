@@ -1,13 +1,10 @@
 import { motion } from 'framer-motion';
 
 const variants = {
-  primary:
-    'bg-gradient-to-r from-primary to-primary-light text-white shadow-lg shadow-primary/30 hover:shadow-primary/50',
-  secondary:
-    'bg-gradient-to-r from-secondary to-secondary-light text-dark font-semibold shadow-lg shadow-secondary/20 hover:shadow-secondary/40',
-  outline:
-    'border border-white/30 text-cream hover:bg-white/10 backdrop-blur-sm',
-  ghost: 'text-cream hover:bg-white/5',
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  outline: 'btn-outline',
+  ghost: 'btn-ghost',
 };
 
 export default function Button({

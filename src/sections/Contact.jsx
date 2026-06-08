@@ -1,28 +1,29 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaWhatsapp } from 'react-icons/fa';
-import { RESORT, SOCIAL_LINKS } from '../utils/constants';
-import { validateContactForm } from '../utils/validators';
-import { sendEnquiry } from '../utils/sendEnquiry';
-import SectionHeading from '../components/ui/SectionHeading';
-import Button from '../components/ui/Button';
-import Logo from '../components/ui/Logo';
-import IconMap from '../components/ui/IconMap';
-import { slideInLeft, slideInRight } from '../animations/variants';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { FaWhatsapp } from "react-icons/fa";
+import { RESORT, SOCIAL_LINKS } from "../utils/constants";
+import { validateContactForm } from "../utils/validators";
+import { sendEnquiry } from "../utils/sendEnquiry";
+import SectionHeading from "../components/ui/SectionHeading";
+import Button from "../components/ui/Button";
+import LogoImg from "../assets/logo.png";
+// import Logo from '../components/ui/Logo';
+import IconMap from "../components/ui/IconMap";
+import { slideInLeft, slideInRight } from "../animations/variants";
 
-const initialForm = { name: '', email: '', phone: '', message: '' };
+const initialForm = { name: "", email: "", phone: "", message: "" };
 
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [submitError, setSubmitError] = useState('');
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = async (e) => {
@@ -34,7 +35,7 @@ export default function Contact() {
     }
 
     setLoading(true);
-    setSubmitError('');
+    setSubmitError("");
 
     try {
       await sendEnquiry(form);
@@ -43,7 +44,7 @@ export default function Contact() {
       setTimeout(() => setSubmitted(false), 4000);
     } catch {
       setSubmitError(
-        'Could not send your message. Please try WhatsApp or email us directly.'
+        "Could not send your message. Please try WhatsApp or email us directly.",
       );
     } finally {
       setLoading(false);
@@ -51,8 +52,8 @@ export default function Contact() {
   };
 
   const inputClass = (field) =>
-    `w-full px-4 py-3 rounded-xl bg-white/5 border text-cream placeholder:text-muted text-sm focus:outline-none transition-colors ${
-      errors[field] ? 'border-primary-light' : 'border-white/10 focus:border-secondary/50'
+    `w-full px-4 py-3 rounded-xl bg-white border border-border text-cream placeholder:text-muted/60 text-sm focus:outline-none transition-colors ${
+      errors[field] ? "border-primary-light" : "focus:border-secondary"
     }`;
 
   return (
@@ -80,20 +81,31 @@ export default function Contact() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
                   <IconMap name="Send" size={28} className="text-secondary" />
                 </div>
-                <h3 className="font-display text-2xl text-cream">Message Sent!</h3>
-                <p className="text-muted mt-2 text-sm">We&apos;ll get back to you within 24 hours.</p>
+                <h3 className="font-display text-2xl text-cream">
+                  Message Sent!
+                </h3>
+                <p className="text-muted mt-2 text-sm">
+                  We&apos;ll get back to you within 24 hours.
+                </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3 sm2:space-y-4 glass-card rounded-2xl sm2:rounded-3xl p-3 sm2:p-5 sm:p-6 md:p-8 min-w-0">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-3 sm2:space-y-4 glass-card rounded-2xl sm2:rounded-3xl p-3 sm2:p-5 sm:p-6 md:p-8 min-w-0"
+              >
                 <div>
                   <input
                     name="name"
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className={inputClass('name')}
+                    className={inputClass("name")}
                   />
-                  {errors.name && <p className="text-primary-light text-xs mt-1">{errors.name}</p>}
+                  {errors.name && (
+                    <p className="text-primary-light text-xs mt-1">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <input
@@ -102,9 +114,13 @@ export default function Contact() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="Email Address"
-                    className={inputClass('email')}
+                    className={inputClass("email")}
                   />
-                  {errors.email && <p className="text-primary-light text-xs mt-1">{errors.email}</p>}
+                  {errors.email && (
+                    <p className="text-primary-light text-xs mt-1">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <input
@@ -112,9 +128,13 @@ export default function Contact() {
                     value={form.phone}
                     onChange={handleChange}
                     placeholder="Phone Number"
-                    className={inputClass('phone')}
+                    className={inputClass("phone")}
                   />
-                  {errors.phone && <p className="text-primary-light text-xs mt-1">{errors.phone}</p>}
+                  {errors.phone && (
+                    <p className="text-primary-light text-xs mt-1">
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <textarea
@@ -123,16 +143,28 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Your Message"
                     rows={4}
-                    className={`${inputClass('message')} resize-none`}
+                    className={`${inputClass("message")} resize-none`}
                   />
-                  {errors.message && <p className="text-primary-light text-xs mt-1">{errors.message}</p>}
+                  {errors.message && (
+                    <p className="text-primary-light text-xs mt-1">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
                 {submitError && (
-                  <p className="text-primary-light text-sm text-center">{submitError}</p>
+                  <p className="text-primary-light text-sm text-center">
+                    {submitError}
+                  </p>
                 )}
-                <Button type="submit" variant="secondary" className="w-full" disabled={loading}>
+                <Button
+                  type="submit"
+                  variant="secondary"
+                  className="w-full"
+                  disabled={loading}
+                  style={{ color: "#fff" }}
+                >
                   <IconMap name="Send" size={16} />
-                  {loading ? 'Sending…' : 'Send Message'}
+                  {loading ? "Sending…" : "Send Message"}
                 </Button>
               </form>
             )}
@@ -146,19 +178,35 @@ export default function Contact() {
             className="flex flex-col justify-center min-w-0"
           >
             <div className="glass-card rounded-2xl xs:rounded-3xl p-4 xs:p-5 sm:p-6 md:p-8 mb-5 xs:mb-6 text-center sm:text-left min-w-0">
-              <Logo size="lg" className="justify-center sm:justify-start mb-6" />
-              <h3 className="font-display text-xl font-semibold text-cream mb-2">{RESORT.name}</h3>
+              {/* <Logo size="lg" className="justify-center sm:justify-start mb-6" /> */}
+              <div className="border-secondary-light border-1 rounded-2xl w-14 p-1 flex items-center justify-center">
+                <img
+                  src={LogoImg}
+                  alt={RESORT.name}
+                  className="w-8 h-8 sm2:w-9 sm2:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 object-contain rounded-lg sm2:rounded-xl"
+                />
+              </div>
+              <h3 className="font-display text-xl font-semibold text-cream mb-2">
+                {RESORT.name}
+              </h3>
               <p className="text-sm text-muted mb-6 leading-relaxed">
-                Reach our concierge for bookings, events, and personalized experiences at {RESORT.name}.
+                Reach our concierge for bookings, events, and personalized
+                experiences at {RESORT.name}.
               </p>
-              <Button variant="primary" href={RESORT.whatsappUrl} className="w-full sm:w-auto">
+              <Button
+                variant="primary"
+                href={RESORT.whatsappUrl}
+                className="w-full sm:w-auto"
+              >
                 <FaWhatsapp size={20} />
                 Chat on WhatsApp
               </Button>
             </div>
 
             <div>
-              <p className="text-sm text-muted mb-4 text-center sm:text-left">Follow us on social media</p>
+              <p className="text-sm text-muted mb-4 text-center sm:text-left">
+                Follow us on social media
+              </p>
               <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
                 {SOCIAL_LINKS.map((s) => (
                   <a

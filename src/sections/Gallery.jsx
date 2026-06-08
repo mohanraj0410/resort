@@ -7,7 +7,7 @@ const imageHeights = ['h-44 xs:h-52 sm:h-56', 'h-40 xs:h-48 sm:h-52', 'h-48 xs:h
 
 const GalleryImage = memo(function GalleryImage({ src, alt, category, className }) {
   return (
-    <div className={`relative overflow-hidden bg-dark-soft group ${className}`}>
+    <div className={`relative overflow-hidden bg-dark group ${className}`}>
       <img
         src={src}
         alt={alt}
@@ -15,8 +15,8 @@ const GalleryImage = memo(function GalleryImage({ src, alt, category, className 
         decoding="async"
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 xs:p-4">
-        <span className="text-xs xs:text-sm text-cream">{category}</span>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 xs:p-4">
+        <span className="text-xs xs:text-sm text-white">{category}</span>
         <IconMap name="ZoomIn" size={18} className="text-secondary shrink-0" />
       </div>
     </div>
@@ -50,7 +50,7 @@ export default function Gallery() {
               className={`px-2.5 py-1 sm2:px-4 sm2:py-2 rounded-full text-[10px] sm2:text-sm transition-colors duration-200 whitespace-nowrap ${
                 filter === cat
                   ? 'bg-gradient-to-r from-primary to-primary-light text-white'
-                  : 'glass text-cream/70 hover:text-cream'
+                  : 'glass text-cream/70 hover:text-cream hover:bg-primary/20'
               }`}
             >
               {cat}
@@ -85,7 +85,7 @@ export default function Gallery() {
         >
           <button
             type="button"
-            className="absolute top-4 right-4 xs:top-6 xs:right-6 w-10 h-10 rounded-full glass flex items-center justify-center text-cream z-10"
+            className="absolute top-4 right-4 xs:top-6 xs:right-6 w-10 h-10 rounded-full glass flex items-center justify-center text-white z-10"
             onClick={closeLightbox}
             aria-label="Close lightbox"
           >
