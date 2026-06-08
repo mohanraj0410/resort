@@ -16,6 +16,15 @@ import {
   FaPhone,
   FaEnvelope,
   FaWhatsapp,
+  FaStar,
+  FaArrowRight,
+  FaCheckCircle,
+  FaExclamationCircle,
+  FaCheck,
+  FaChevronUp,
+  FaMapMarkerAlt,
+  FaUsers,
+  FaCalendarAlt,
 } from 'react-icons/fa';
 import {
   MdSpa,
@@ -28,53 +37,76 @@ import {
   MdLocationOn,
   MdSend,
 } from 'react-icons/md';
-import { IoClose, IoChevronDown, IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import {
+  IoClose,
+  IoChevronDown,
+  IoChevronBack,
+  IoChevronForward,
+  IoChevronUp,
+  IoPlayCircle,
+} from 'react-icons/io5';
 import { BsZoomIn, BsQuote, BsPlus, BsDash } from 'react-icons/bs';
-import { IoPlayCircle } from 'react-icons/io5';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { IoIosArrowUp } from 'react-icons/io';
 
 const ICONS = {
+  // Amenities
   Bed: FaBed,
   Waves: FaWater,
-  Sparkles: MdSpa,
   UtensilsCrossed: MdRestaurant,
   Mountain: FaMountain,
   Flame: FaFire,
   Trees: FaTree,
   Wifi: FaWifi,
   Car: FaCar,
+
+  // Events
   Heart: FaHeart,
   Briefcase: MdBusinessCenter,
   Cake: FaBirthdayCake,
   Music: FaMusic,
+
+  // Social
   Instagram: FaInstagram,
   Facebook: FaFacebook,
   Twitter: FaTwitter,
   Youtube: FaYoutube,
+
+  // Contact / info
   Phone: FaPhone,
   Mail: FaEnvelope,
   Email: MdEmail,
   MapPin: MdLocationOn,
+  Navigation: MdLocationOn,
   Send: MdSend,
   Headphones: MdHeadset,
   MessageSquare: MdChat,
   Clock: MdSchedule,
+  Calendar: MdSchedule,
+  CalendarDays: FaCalendarAlt,
+
+  // UI
   Menu: HiMenuAlt3,
   X: IoClose,
   ChevronDown: IoChevronDown,
+  ChevronUp: IoChevronUp,
   ChevronLeft: IoChevronBack,
   ChevronRight: IoChevronForward,
+  ArrowUp: IoIosArrowUp,
+  ArrowRight: FaArrowRight,
   ZoomIn: BsZoomIn,
   Quote: BsQuote,
-  ArrowUp: IoIosArrowUp,
-  Calendar: MdSchedule,
-  Users: FaBed,
-  Play: FaMusic,
-  Navigation: MdLocationOn,
   Plus: BsPlus,
   Minus: BsDash,
   Play: IoPlayCircle,
+
+  // Status / feedback
+  Star: FaStar,
+  Sparkles: MdSpa,
+  CheckCircle: FaCheckCircle,
+  AlertCircle: FaExclamationCircle,
+  Check: FaCheck,
+  Users: FaUsers,
 };
 
 export default function IconMap({ name, className = '', size = 20, ...props }) {

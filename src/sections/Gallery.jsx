@@ -1,39 +1,97 @@
-import { useState, useCallback, memo } from 'react';
+import { useState, useCallback, useEffect, memo } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { motion, AnimatePresence } from 'framer-motion';
 import IconMap from '../components/ui/IconMap';
 import { GALLERY_IMAGES, GALLERY_CATEGORIES } from '../utils/constants';
 import SectionHeading from '../components/ui/SectionHeading';
 
-const imageHeights = ['h-44 xs:h-52 sm:h-56', 'h-40 xs:h-48 sm:h-52', 'h-48 xs:h-56 sm:h-64'];
+const INITIAL_VISIBLE = 6;
+const HEIGHTS = ['h-48 sm:h-56', 'h-40 sm:h-48', 'h-56 sm:h-64'];
 
-const GalleryImage = memo(function GalleryImage({ src, alt, category, className }) {
+/* Image tile with blur-to-sharp reveal */
+const GalleryItem = memo(function GalleryItem({ src, alt, category, className, onClick, priority }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <div className={`relative overflow-hidden bg-dark group ${className}`}>
+    <div
+      className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-dark-soft group cursor-zoom-in ${className}`}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && onClick()}
+      aria-label={`View ${alt}`}
+    >
+      {!loaded && (
+        <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-dark-soft via-border-soft to-dark-soft" />
+      )}
+
       <img
         src={src}
         alt={alt}
-        loading="lazy"
+        loading={priority ? 'eager' : 'lazy'}
         decoding="async"
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        fetchPriority={priority ? 'high' : 'low'}
+        onLoad={() => setLoaded(true)}
+        className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.06] ${
+          loaded ? 'opacity-100' : 'opacity-0'
+        }`}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 xs:p-4">
-        <span className="text-xs xs:text-sm text-white">{category}</span>
-        <IconMap name="ZoomIn" size={18} className="text-secondary shrink-0" />
-      </div>
+
+      {loaded && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-between p-3 sm:p-4">
+          <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center">
+            <IconMap name="ZoomIn" size={14} className="text-white" />
+          </div>
+          <span className="text-xs font-medium text-white/80 bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm">
+            {category}
+          </span>
+        </div>
+      )}
     </div>
   );
 });
 
 export default function Gallery() {
   const [filter, setFilter] = useState('All');
-  const [lightbox, setLightbox] = useState(null);
+  const [lightboxIdx, setLightboxIdx] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
-  const filtered =
-    filter === 'All' ? GALLERY_IMAGES : GALLERY_IMAGES.filter((img) => img.category === filter);
+  const allFiltered =
+    filter === 'All'
+      ? GALLERY_IMAGES
+      : GALLERY_IMAGES.filter((img) => img.category === filter);
 
-  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const visible = showAll ? allFiltered : allFiltered.slice(0, INITIAL_VISIBLE);
+  const hasMore = !showAll && allFiltered.length > INITIAL_VISIBLE;
+  const currentImg = lightboxIdx !== null ? allFiltered[lightboxIdx] : null;
+
+  const closeModal = useCallback(() => setLightboxIdx(null), []);
+  const goPrev = useCallback(() =>
+    setLightboxIdx((i) => (i - 1 + allFiltered.length) % allFiltered.length),
+  [allFiltered.length]);
+  const goNext = useCallback(() =>
+    setLightboxIdx((i) => (i + 1) % allFiltered.length),
+  [allFiltered.length]);
+
+  /* Arrow key navigation */
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const onKey = (e) => {
+      if (e.key === 'ArrowLeft')  goPrev();
+      if (e.key === 'ArrowRight') goNext();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [lightboxIdx, goPrev, goNext]);
+
+  const handleFilter = useCallback((cat) => {
+    setFilter(cat);
+    setShowAll(false);
+    setLightboxIdx(null);
+  }, []);
 
   return (
-    <section id="gallery" className="section-padding bg-dark overflow-hidden content-auto">
+    <section id="gallery" className="section-padding bg-dark overflow-hidden">
       <div className="section-container">
         <SectionHeading
           label="Gallery"
@@ -41,64 +99,239 @@ export default function Gallery() {
           subtitle="Explore the beauty and elegance of Red Fort Resort through our lens."
         />
 
-        <div className="flex flex-wrap justify-center gap-1 sm2:gap-2 mb-6 sm2:mb-10 -mx-0.5">
+        {/* Filter pills */}
+        <div
+          className="flex overflow-x-auto no-scrollbar gap-2 mb-6 sm:mb-10 pb-0.5 sm:flex-wrap sm:justify-center -mx-4 px-4 sm:mx-0 sm:px-0"
+          role="group"
+          aria-label="Filter gallery"
+        >
           {GALLERY_CATEGORIES.map((cat) => (
             <button
               key={cat}
               type="button"
-              onClick={() => setFilter(cat)}
-              className={`px-2.5 py-1 sm2:px-4 sm2:py-2 rounded-full text-[10px] sm2:text-sm transition-colors duration-200 whitespace-nowrap ${
+              onClick={() => handleFilter(cat)}
+              className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-250 whitespace-nowrap ${
                 filter === cat
-                  ? 'bg-gradient-to-r from-primary to-primary-light text-white'
-                  : 'glass text-cream/70 hover:text-cream hover:bg-primary/20'
+                  ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-[0_4px_16px_rgba(130,21,16,0.25)]'
+                  : 'glass text-muted hover:text-cream hover:bg-secondary/5'
               }`}
+              aria-pressed={filter === cat}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        <div className="columns-1 sm2:columns-2 lg:columns-3 gap-3 sm2:gap-4">
-          {filtered.map((img, i) => (
-            <div
-              key={`${img.category}-${img.alt}-${i}`}
-              className="break-inside-avoid mb-3 xs:mb-4 cursor-pointer"
-              onClick={() => setLightbox(img)}
+        {/* Masonry grid */}
+        <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4">
+          <AnimatePresence mode="popLayout">
+            {visible.map((img, i) => (
+              <motion.div
+                key={`${img.category}-${img.alt}`}
+                layout
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.28, ease: 'easeOut', delay: Math.min(i, 5) * 0.05 }}
+                className="break-inside-avoid mb-3 sm:mb-4"
+              >
+                <GalleryItem
+                  src={img.src}
+                  alt={img.alt}
+                  category={img.category}
+                  className={HEIGHTS[i % HEIGHTS.length]}
+                  priority={i < 2}
+                  onClick={() => setLightboxIdx(i)}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Load more */}
+        {hasMore && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="flex justify-center mt-8 sm:mt-10"
+          >
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 glass text-muted hover:text-cream"
+              style={{ border: '1px solid rgba(184,122,28,0.22)' }}
             >
-              <GalleryImage
-                src={img.src}
-                alt={img.alt}
-                category={img.category}
-                className={`rounded-xl xs:rounded-2xl ${imageHeights[i % 3]}`}
-              />
-            </div>
-          ))}
-        </div>
+              <IconMap name="Plus" size={14} className="text-secondary" />
+              View All Photos ({allFiltered.length})
+            </button>
+          </motion.div>
+        )}
       </div>
 
-      {lightbox && (
-        <div
-          className="fixed inset-0 z-[300] bg-black/90 flex items-center justify-center p-3 xs:p-4 animate-fade-in"
-          onClick={closeLightbox}
-          role="dialog"
-          aria-modal="true"
-        >
-          <button
-            type="button"
-            className="absolute top-4 right-4 xs:top-6 xs:right-6 w-10 h-10 rounded-full glass flex items-center justify-center text-white z-10"
-            onClick={closeLightbox}
-            aria-label="Close lightbox"
-          >
-            <IconMap name="X" size={20} />
-          </button>
-          <img
-            src={lightbox.src}
-            alt={lightbox.alt}
-            className="max-w-full max-h-[80vh] xs:max-h-[85vh] object-contain rounded-xl xs:rounded-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
+      {/* ── Gallery Modal (Radix Dialog — renders in document.body portal) ── */}
+      <Dialog.Root open={lightboxIdx !== null} onOpenChange={(open) => !open && closeModal()}>
+        <Dialog.Portal>
+
+          {/* Overlay — covers everything including navbar */}
+          <Dialog.Overlay asChild>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22 }}
+              className="fixed inset-0"
+              style={{
+                background: 'rgba(4,2,1,0.92)',
+                backdropFilter: 'blur(18px)',
+                WebkitBackdropFilter: 'blur(18px)',
+                zIndex: 9998,
+              }}
+            />
+          </Dialog.Overlay>
+
+          {/* Dialog content */}
+          <Dialog.Content asChild onOpenAutoFocus={(e) => e.preventDefault()}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.93, y: 28 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 28 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed inset-0 flex items-center justify-center p-3 sm:p-5"
+              style={{ zIndex: 9999 }}
+            >
+              {currentImg && (
+                <div
+                  className="w-full flex flex-col overflow-hidden"
+                  style={{
+                    maxWidth: 'min(96vw, 880px)',
+                    borderRadius: '16px',
+                    background: '#0d0906',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    boxShadow: '0 32px 100px rgba(0,0,0,0.92)',
+                  }}
+                >
+                  {/* Header */}
+                  <div
+                    className="shrink-0 flex items-center justify-between px-4 sm:px-5 py-3"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/28">
+                        Gallery
+                      </span>
+                      <span className="w-px h-3 bg-white/10" />
+                      <span
+                        className="text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full"
+                        style={{
+                          background: 'rgba(184,122,28,0.14)',
+                          border: '1px solid rgba(184,122,28,0.26)',
+                          color: '#d4a843',
+                        }}
+                      >
+                        {currentImg.category}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-[11px] text-white/25 font-medium">
+                        {lightboxIdx + 1} / {allFiltered.length}
+                      </span>
+                      <Dialog.Close asChild>
+                        <button
+                          type="button"
+                          aria-label="Close gallery"
+                          className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/12 transition-colors"
+                          style={{ border: '1px solid rgba(255,255,255,0.10)' }}
+                        >
+                          <IconMap name="X" size={13} className="text-white/60" />
+                        </button>
+                      </Dialog.Close>
+                    </div>
+                  </div>
+
+                  {/* Image — 16:9, full card width, object-cover */}
+                  <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={lightboxIdx}
+                        src={currentImg.src}
+                        alt={currentImg.alt}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.18, ease: 'easeOut' }}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </AnimatePresence>
+
+                    {/* Bottom gradient for readability */}
+                    <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/55 to-transparent pointer-events-none" />
+
+                    {/* Prev */}
+                    <button
+                      type="button"
+                      onClick={goPrev}
+                      aria-label="Previous image"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
+                      style={{
+                        background: 'rgba(6,3,1,0.70)',
+                        border: '1px solid rgba(255,255,255,0.14)',
+                        backdropFilter: 'blur(10px)',
+                      }}
+                    >
+                      <IconMap name="ChevronLeft" size={17} className="text-white/85" />
+                    </button>
+
+                    {/* Next */}
+                    <button
+                      type="button"
+                      onClick={goNext}
+                      aria-label="Next image"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
+                      style={{
+                        background: 'rgba(6,3,1,0.70)',
+                        border: '1px solid rgba(255,255,255,0.14)',
+                        backdropFilter: 'blur(10px)',
+                      }}
+                    >
+                      <IconMap name="ChevronRight" size={17} className="text-white/85" />
+                    </button>
+                  </div>
+
+                  {/* Footer */}
+                  <div
+                    className="shrink-0 flex items-center justify-between px-4 sm:px-5 py-3"
+                    style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+                  >
+                    <p className="text-xs sm:text-sm text-white/45 truncate pr-4">
+                      {currentImg.alt}
+                    </p>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      {allFiltered.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setLightboxIdx(i)}
+                          aria-label={`Go to image ${i + 1}`}
+                          className="rounded-full transition-all duration-300"
+                          style={{
+                            width: i === lightboxIdx ? '16px' : '4px',
+                            height: '3px',
+                            background:
+                              i === lightboxIdx ? '#d4a843' : 'rgba(255,255,255,0.16)',
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </Dialog.Content>
+
+        </Dialog.Portal>
+      </Dialog.Root>
     </section>
   );
 }

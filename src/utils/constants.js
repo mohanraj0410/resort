@@ -69,15 +69,6 @@ export const AMENITIES = [
 
 export const GALLERY_CATEGORIES = ['All', 'Rooms', 'Dining', 'Nature', 'Events'];
 
-// export const IMAGES = {
-//   outlook: "https://drive.google.com/uc?export=view&id=FILE_ID_1",
-//   room1: "https://drive.google.com/uc?export=view&id=FILE_ID_2",
-//   room2: "https://drive.google.com/uc?export=view&id=FILE_ID_3",
-//   room3: "https://drive.google.com/uc?export=view&id=FILE_ID_4",
-//   room4: "https://drive.google.com/uc?export=view&id=FILE_ID_5",
-//   room5: "https://drive.google.com/uc?export=view&id=FILE_ID_6",
-// };
-
 export const GALLERY_IMAGES = [
   { src: room1, category: 'Rooms', alt: 'Premium guest room with elegant bedding' },
   { src: room2, category: 'Rooms', alt: 'Heritage brick suite with luxury comforts' },
@@ -87,8 +78,6 @@ export const GALLERY_IMAGES = [
   { src: outlook, category: 'Nature', alt: 'Hillside views near Siruvani' },
   { src: room4, category: 'Dining', alt: 'In-room dining and lounge space' },
   { src: room3, category: 'Dining', alt: 'Private dining setup in suite' },
-  { src: room5, category: 'Events', alt: 'Intimate celebration venue' },
-  { src: room1, category: 'Events', alt: 'Elegant space for special occasions' },
   { src: outlook, category: 'Events', alt: 'Outdoor gatherings with valley views' },
 ];
 
@@ -107,6 +96,11 @@ export const SHORT_VIDEOS = [
     title: 'Forest Trail Adventure',
     poster: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?w=600&q=80',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-hiking-through-a-forest-1273-large.mp4',
+  },
+  {
+    title: 'Wine & Dine Night',
+    poster: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&q=80',
+    video: 'https://assets.mixkit.co/videos/preview/mixkit-wine-and-dine-night-437-large.mp4',
   },
 ];
 
@@ -136,6 +130,7 @@ export const EVENT_TYPES = [
     image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80',
   },
 ];
+
 
 export const UPCOMING_EVENTS = [
   { date: 'Jun 14', title: 'Summer Jazz Under the Stars', type: 'Music Night' },
@@ -249,6 +244,13 @@ export const NEARBY_PLACES = [
     time: '3 hr',
     image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Valparai_GhatRoad.JPG',
     mapsUrl: 'https://maps.google.com/?q=Valparai+Hills+Coimbatore',
+  },  
+  {
+    name: 'Velingiri Hills',
+    distance: '28 km',
+    time: '1 hr',
+    image: 'https://cf-images.assettype.com/newindianexpress/2024-04/b8aaf5be-3c0c-41b2-92ba-58073a4a3ad0/Medical_camp.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true',
+    mapsUrl: 'https://maps.google.com/?q=Velingiri+Hills+Coimbatore',
   }
 ];
 

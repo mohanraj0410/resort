@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS } from "../../utils/constants";
+import { NAV_LINKS, RESORT } from "../../utils/constants";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import logo from "../../assets/logo.png";
 import IconMap from "../ui/IconMap";
@@ -12,8 +12,7 @@ export default function Navbar() {
   const activeId = useScrollSpy(sectionIds);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    // Passive listener — no duplicate; useScrollSpy already adds its own passive listener
+    const onScroll = () => setScrolled(window.scrollY > 72);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -21,65 +20,78 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  const navBg =
-    scrolled || mobileOpen
-      ? "bg-dark/80 backdrop-blur-md border-b border-border shadow-[0_6px_18px_rgba(45,34,24,0.06)]"
-      : "bg-transparent backdrop-blur-sm border-b border-transparent";
-
-      const txtBg =
-      scrolled || mobileOpen
-        ? "text-gradient-gold "
-        : "text-white shadow-[0_6px_18px_rgba(45,34,24,0.06)]";
+  const isLight = !scrolled && !mobileOpen;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full max-w-[100vw] will-change-transform ${navBg}`}
+      className={`fixed top-0 left-0 right-0 z-50 w-full max-w-[100vw] transition-all duration-500 ${
+        scrolled || mobileOpen
+          ? "bg-dark/90 backdrop-blur-xl border-b border-border shadow-[0_2px_24px_rgba(45,34,24,0.08)]"
+          : "bg-transparent backdrop-blur-sm border-b border-transparent"
+      }`}
     >
-      <nav className="section-container flex items-center justify-between gap-1.5 sm2:gap-2 h-14 sm2:h-16 md:h-20 min-w-0">
+      <nav className="section-container flex items-center justify-between gap-2 h-16 md:h-20 min-w-0">
+        {/* Logo */}
         <a
           href="#home"
-          className="group flex items-center gap-1.5 sm2:gap-2 min-w-0 flex-1 overflow-hidden"
+          className="group flex items-center gap-2 min-w-0 shrink-0"
+          aria-label="Red Fort Resort — home"
         >
-          <div className="p-0.5 sm2:p-1 md:p-1.5 rounded-full bg-white/[0.04] border border-secondary/15 group-hover:border-secondary/30 transition-all duration-300 backdrop-blur-md shadow-inner shrink-0">
+          <div
+            className={`rounded-xl p-0.5 transition-all duration-300 shrink-0 ${
+              scrolled
+                ? "border border-secondary/30 bg-white shadow-[0_0_12px_rgba(184,122,28,0.15)]"
+                : "border border-white/20 bg-white/8"
+            }`}
+          >
             <img
               src={logo}
-              alt="Red Fort Resort Logo"
-              className="w-8 h-8 sm2:w-9 sm2:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 object-contain rounded-lg sm2:rounded-xl"
+              alt=""
+              aria-hidden="true"
+              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 object-contain rounded-lg"
             />
           </div>
-          <div className="flex flex-col leading-tight min-w-0 overflow-hidden">
-            <span className={`text-xs sm2:text-sm md:text-base lg:text-lg font-display font-bold tracking-wide sm2:tracking-wider truncate ${txtBg}`}>
+          <div className="flex flex-col leading-none min-w-0 overflow-hidden">
+            <span
+              className={`text-sm md:text-base lg:text-lg font-display font-bold tracking-wide truncate transition-colors duration-300 ${
+                isLight ? "text-white drop-shadow-sm" : "text-gradient-gold"
+              }`}
+            >
               Red Fort
             </span>
-            <span className="sm2:block text-[8px] md:text-[9.5px] tracking-[0.15em] uppercase text-primary font-medium truncate">
+            <span
+              className={`text-[9px] md:text-[10px] tracking-[0.2em] uppercase font-semibold font-body truncate transition-colors duration-300 ${
+                isLight ? "text-white/70" : "text-primary"
+              }`}
+            >
               Resort
             </span>
           </div>
         </a>
 
-        <ul className="hidden lg:flex items-center gap-6 xl:gap-8 shrink-0">
+        {/* Desktop nav links */}
+        <ul className="hidden lg:flex items-center gap-7 xl:gap-9 shrink-0">
           {NAV_LINKS.map((link) => (
             <li key={link.id}>
               <a
                 href={link.href}
-                className={`text-sm tracking-wide transition-colors relative py-1 whitespace-nowrap ${
+                className={`relative text-sm font-medium tracking-wide py-1.5 transition-colors duration-200 whitespace-nowrap ${
                   activeId === link.id
                     ? "text-secondary"
-                    : scrolled
-                      ? "text-muted hover:text-cream"
-                      : "text-white/80 hover:text-white"
+                    : isLight
+                    ? "text-white/85 hover:text-white"
+                    : "text-muted hover:text-cream"
                 }`}
               >
                 {link.label}
                 {activeId === link.id && (
                   <motion.span
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary rounded-full"
+                    layoutId="nav-active-line"
+                    className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] rounded-full bg-secondary"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </a>
@@ -87,48 +99,126 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* Desktop CTA */}
+        <a
+          href={RESORT.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`hidden lg:flex items-center gap-2 shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+            scrolled
+              ? "bg-gradient-to-r from-primary to-primary-light text-white shadow-[0_4px_16px_rgba(130,21,16,0.25)] hover:shadow-[0_6px_24px_rgba(130,21,16,0.35)] hover:-translate-y-0.5"
+              : "border border-white/35 text-white bg-white/8 hover:bg-white/16 hover:border-white/55"
+          }`}
+        >
+          <IconMap name="Phone" size={14} />
+          Book Now
+        </a>
+
+        {/* Mobile hamburger */}
         <button
           type="button"
-          className={`lg:hidden w-9 h-9 flex items-center justify-center rounded-lg transition-colors shrink-0 -mr-0.5 ${
-            scrolled
-              ? "text-muted hover:bg-white/5"
-              : "text-white/80 hover:bg-white/10"
-          }`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          className={`lg:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-colors shrink-0 ${
+            isLight
+              ? "text-white/85 hover:bg-white/12"
+              : "text-muted hover:bg-black/5"
+          }`}
         >
-          <IconMap name={mobileOpen ? "X" : "Menu"} size={20} />
+          <span className="sr-only">{mobileOpen ? "Close" : "Menu"}</span>
+          <div className="w-5 h-4 flex flex-col justify-between pointer-events-none">
+            <span
+              className={`block h-[1.5px] rounded-full transition-all duration-300 origin-center ${
+                isLight ? "bg-white" : "bg-cream"
+              } ${mobileOpen ? "rotate-45 translate-y-[7.5px]" : ""}`}
+            />
+            <span
+              className={`block h-[1.5px] rounded-full transition-all duration-300 ${
+                isLight ? "bg-white" : "bg-cream"
+              } ${mobileOpen ? "opacity-0 scale-x-0" : ""}`}
+            />
+            <span
+              className={`block h-[1.5px] rounded-full transition-all duration-300 origin-center ${
+                isLight ? "bg-white" : "bg-cream"
+              } ${mobileOpen ? "-rotate-45 -translate-y-[7.5px]" : ""}`}
+            />
+          </div>
         </button>
       </nav>
 
+      {/* Mobile full-screen overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-dark/95 backdrop-blur-md border-b border-border overflow-hidden"
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="lg:hidden fixed inset-0 top-16 overflow-y-auto"
+            style={{
+              background: 'rgba(255,249,242,0.98)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderTop: '1px solid var(--color-border)',
+              zIndex: 60,
+            }}
           >
-            <ul className="section-container flex flex-col py-3 sm2:py-6 gap-0.5 sm2:gap-2">
-              {NAV_LINKS.map((link, i) => (
-                <motion.li
-                  key={link.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`block text-[15px] sm:text-lg py-2.5 sm2:py-3 ${
-                      activeId === link.id ? "text-secondary" : "text-white"
-                    }`}
+            <div className="section-container py-6 flex flex-col h-full min-h-[calc(100dvh-4rem)]">
+              <ul className="space-y-1 flex-1">
+                {NAV_LINKS.map((link, i) => (
+                  <motion.li
+                    key={link.id}
+                    initial={{ opacity: 0, x: -18 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.045, duration: 0.22 }}
                   >
-                    {link.label}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
+                    <a
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={`group flex items-center justify-between py-4 border-b transition-colors ${
+                        activeId === link.id
+                          ? "border-secondary/30 text-secondary"
+                          : "border-border-soft text-cream/80 hover:text-cream"
+                      }`}
+                    >
+                      <span className="font-display text-2xl font-semibold tracking-tight">
+                        {link.label}
+                      </span>
+                      <IconMap
+                        name="ArrowRight"
+                        size={18}
+                        className={`transition-all duration-200 group-hover:translate-x-1 ${
+                          activeId === link.id ? "text-secondary" : "text-muted"
+                        }`}
+                      />
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.32, duration: 0.22 }}
+                className="mt-8 space-y-3 safe-bottom"
+              >
+                <a
+                  href={RESORT.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl bg-gradient-to-r from-primary to-primary-light text-white font-semibold text-base shadow-[0_4px_20px_rgba(130,21,16,0.3)]"
+                >
+                  <IconMap name="Phone" size={18} />
+                  Book Now — Chat on WhatsApp
+                </a>
+                <p className="text-center text-xs text-muted pb-2">
+                  Available 24/7 · Instant Response
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

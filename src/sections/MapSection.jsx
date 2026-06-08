@@ -5,61 +5,94 @@ import Button from '../components/ui/Button';
 import IconMap from '../components/ui/IconMap';
 import { slideInLeft, slideInRight } from '../animations/variants';
 
+const QUICK_FACTS = [
+  { icon: 'Clock', label: 'Check-in', value: '2:00 PM' },
+  { icon: 'Clock', label: 'Check-out', value: '11:00 AM' },
+  { icon: 'Car', label: 'Parking', value: 'Free Valet' },
+];
+
 export default function MapSection() {
   return (
     <section id="location" className="section-padding bg-dark-soft overflow-hidden">
       <div className="section-container">
         <SectionHeading
           label="Find Us"
-          title="Map & Navigation"
-          subtitle="Located in the heart of the hills, easily accessible yet wonderfully secluded."
+          title="Location & Navigation"
+          subtitle="Located in the heart of the hills — easily accessible yet wonderfully secluded."
         />
 
-        <div className="grid lg:grid-cols-5 gap-5 xs:gap-6 lg:gap-8">
+        <div className="grid lg:grid-cols-5 gap-5 lg:gap-8 items-stretch">
+          {/* Info card */}
           <motion.div
             variants={slideInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:col-span-2 glass-card rounded-2xl xs:rounded-3xl p-4 xs:p-5 sm:p-6 md:p-8 flex flex-col justify-between min-w-0"
+            className="lg:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 flex flex-col gap-6 min-w-0"
           >
+            {/* Address block */}
             <div>
-              <div className="w-11 h-11 xs:w-12 xs:h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-5 xs:mb-6">
-                <IconMap name="MapPin" size={24} className="text-primary-light" />
+              <div className="w-11 h-11 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
+                <IconMap name="MapPin" size={22} className="text-primary-light" />
               </div>
-              <h3 className="font-display text-xl xs:text-2xl font-semibold text-cream mb-3 xs:mb-4">Visit Us</h3>
-              <p className="text-cream/70 leading-relaxed text-sm break-words">{RESORT.address}</p>
+              <h3 className="font-display text-xl sm:text-2xl font-semibold text-cream mb-2">
+                Visit Us
+              </h3>
+              <p className="text-sm text-muted leading-relaxed break-words">{RESORT.address}</p>
+            </div>
 
-              <div className="mt-5 xs:mt-6">
-                <a
-                  href={`tel:${RESORT.phone}`}
-                  className="flex items-center gap-3 text-sm text-cream/70 hover:text-secondary transition-colors break-all"
+            {/* Phone */}
+            <a
+              href={`tel:${RESORT.phone}`}
+              className="group flex items-center gap-3 text-sm text-cream/70 hover:text-secondary transition-colors"
+            >
+              <span className="w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 group-hover:bg-secondary/20 transition-colors">
+                <IconMap name="Phone" size={14} className="text-secondary" />
+              </span>
+              {RESORT.phone}
+            </a>
+
+            {/* Quick facts */}
+            <div className="grid grid-cols-3 gap-2.5">
+              {QUICK_FACTS.map(({ icon, label, value }) => (
+                <div
+                  key={label}
+                  className="bg-dark-soft rounded-xl p-3 text-center"
                 >
-                  <IconMap name="Phone" size={16} className="text-secondary shrink-0" />
-                  {RESORT.phone}
-                </a>
-              </div>
+                  <IconMap name={icon} size={15} className="text-secondary mx-auto mb-1.5" />
+                  <p className="text-[10px] text-muted uppercase tracking-wider font-semibold">{label}</p>
+                  <p className="text-xs font-semibold text-cream mt-0.5">{value}</p>
+                </div>
+              ))}
             </div>
 
-            <div className="mt-6 xs:mt-8">
-              <Button variant="secondary" target="_blank" href={RESORT.directionsUrl} className="w-full sm3:w-auto">
-                <IconMap name="Navigation" size={16} />
-                Get Directions
-              </Button>
-            </div>
+            {/* Directions CTA */}
+            <Button
+              variant="secondary"
+              target="_blank"
+              href={RESORT.directionsUrl}
+              rel="noopener noreferrer"
+              className="w-full !py-3.5 mt-auto"
+            >
+              <IconMap name="Navigation" size={16} />
+              Get Directions
+            </Button>
           </motion.div>
 
+          {/* Map embed */}
           <motion.div
             variants={slideInRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:col-span-3 rounded-2xl xs:rounded-3xl overflow-hidden glass-card h-[240px] xs:h-[280px] sm:h-[360px] md:h-[400px] lg:h-[min(28rem,100%)] lg:min-h-[320px] min-w-0"
+            className="lg:col-span-3 rounded-2xl sm:rounded-3xl overflow-hidden glass-card shadow-[0_8px_40px_rgba(45,34,24,0.10)] min-w-0"
+            style={{ minHeight: '320px', height: 'min(28rem, 100%)' }}
           >
             <iframe
               title="Red Fort Resort Location"
               src={RESORT.mapEmbed}
-              className="w-full h-full border-0 grayscale-[30%] contrast-[1.1]"
+              className="w-full h-full border-0"
+              style={{ minHeight: '320px', filter: 'saturate(0.85) contrast(1.05)' }}
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"

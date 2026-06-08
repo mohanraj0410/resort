@@ -3,65 +3,74 @@ import { useEffect, useState } from 'react';
 import { RESORT } from '../../utils/constants';
 import Logo from '../ui/Logo';
 
-const LOADER_MS = 800;
+const DISPLAY_MS = 600;  // how long loader stays visible before exiting
+const EXIT_MS    = 480;  // panel slide duration
 
 export default function PageLoader({ onComplete }) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    // Single timeout — no rAF loop, no 60fps re-renders
-    const id = setTimeout(() => setDone(true), LOADER_MS);
+    const id = setTimeout(() => setDone(true), DISPLAY_MS);
     return () => clearTimeout(id);
   }, []);
 
-  const taglineText = RESORT.tagline || 'Luxury Heritage Retreat';
-
   return (
-    <AnimatePresence>
+    // onExitComplete fires after ALL motion children finish — reliable in Framer Motion v12
+    <AnimatePresence onExitComplete={() => onComplete?.()}>
       {!done && (
-        <div className="fixed inset-0 z-[9999] overflow-hidden flex w-full max-w-[100vw] bg-dark">
+        <div
+          key="page-loader"
+          className="fixed inset-0 z-[9999] overflow-hidden"
+        >
+          {/* Left panel slides out left */}
           <motion.div
-            className="w-1/2 h-full bg-dark relative z-10 border-r border-white/[0.03]"
+            className="absolute inset-y-0 left-0 w-1/2 bg-dark"
             initial={{ x: 0 }}
             exit={{ x: '-100%' }}
-            transition={{ duration: 0.7, ease: [0.77, 0, 0.175, 1] }}
-            onAnimationComplete={(definition) => {
-              if (definition === 'exit' || (typeof definition === 'object' && definition.x === '-100%')) {
-                onComplete?.();
-              }
-            }}
+            transition={{ duration: EXIT_MS / 1000, ease: [0.76, 0, 0.24, 1] }}
           />
 
+          {/* Right panel slides out right */}
           <motion.div
-            className="w-1/2 h-full bg-dark relative z-10 border-l border-white/[0.03]"
+            className="absolute inset-y-0 right-0 w-1/2 bg-dark"
             initial={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ duration: 0.7, ease: [0.77, 0, 0.175, 1] }}
+            transition={{ duration: EXIT_MS / 1000, ease: [0.76, 0, 0.24, 1] }}
           />
 
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center pointer-events-none px-2 sm2:px-4">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(198,138,31,0.08)_0%,rgba(15,10,8,0)_65%)]" />
+          {/* Center branding — fades out during the exit so it doesn't ghost over hero */}
+          <motion.div
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: EXIT_MS / 1000 * 0.5, ease: 'easeOut' }}
+          >
+            {/* Ambient glow */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'radial-gradient(ellipse 55% 50% at 50% 50%, rgba(198,138,31,0.08) 0%, transparent 68%)',
+              }}
+              aria-hidden="true"
+            />
 
-            <div className="relative z-30 flex flex-col items-center justify-center w-full max-w-[min(100%,16.5rem)] sm2:max-w-sm px-1">
-              <div className="relative flex items-center justify-center">
-                {/* CSS-animated ring — zero JS overhead */}
+            <div className="relative z-20 flex flex-col items-center w-full max-w-xs px-4 text-center">
+              {/* Ring + logo */}
+              <div className="relative flex items-center justify-center mb-5">
                 <svg
-                  className="absolute w-28 h-28 sm2:w-40 sm2:h-40 md:w-48 md:h-48 -rotate-90 pointer-events-none"
+                  className="absolute w-36 h-36 sm:w-44 sm:h-44 -rotate-90 pointer-events-none"
                   viewBox="0 0 100 100"
-                  aria-hidden
+                  aria-hidden="true"
                 >
                   <circle
-                    cx="50"
-                    cy="50"
-                    r="46"
-                    stroke="rgba(232,221,208,0.6)"
-                    strokeWidth="1.2"
+                    cx="50" cy="50" r="46"
+                    stroke="rgba(232,221,208,0.30)"
+                    strokeWidth="1"
                     fill="none"
                   />
                   <circle
-                    cx="50"
-                    cy="50"
-                    r="46"
+                    cx="50" cy="50" r="46"
                     stroke="url(#loaderGold)"
                     strokeWidth="1.8"
                     strokeLinecap="round"
@@ -69,26 +78,47 @@ export default function PageLoader({ onComplete }) {
                     strokeDasharray="289"
                     strokeDashoffset="289"
                     style={{
-                      animation: `loader-fill ${LOADER_MS}ms linear forwards`,
+                      animation: `loader-fill ${DISPLAY_MS}ms cubic-bezier(0.4,0,0.2,1) forwards`,
                     }}
                   />
                   <defs>
                     <linearGradient id="loaderGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#c68a1f" />
-                      <stop offset="50%" stopColor="#f4cb6c" />
-                      <stop offset="100%" stopColor="#a17013" />
+                      <stop offset="0%"   stopColor="#a17013" />
+                      <stop offset="50%"  stopColor="#f4cb6c" />
+                      <stop offset="100%" stopColor="#c68a1f" />
                     </linearGradient>
                   </defs>
                 </svg>
 
-                <Logo size="loader" className="scale-[0.58] sm2:scale-[0.75] md:scale-90" glow />
+                <div
+                  className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-secondary/12"
+                  aria-hidden="true"
+                />
+                <Logo size="loader" className="scale-[0.58] sm:scale-[0.70]" glow />
               </div>
 
-              <p className="mt-5 sm2:mt-8 label-track text-[8px] sm2:text-[10px] sm:text-xs uppercase text-cream/70 font-semibold font-body text-center leading-relaxed px-1">
-                {taglineText}
+              {/* Resort name */}
+              <p className="font-display text-lg font-semibold text-gradient-gold tracking-wide mb-1 mt-2">
+                {RESORT.name}
               </p>
+              <p className="text-[10px] uppercase text-cream/50 font-semibold tracking-[0.22em]">
+                {RESORT.tagline}
+              </p>
+
+              {/* Loading dots */}
+              <div className="flex items-center gap-1.5 mt-5" aria-label="Loading">
+                {[0, 1, 2].map((i) => (
+                  <span
+                    key={i}
+                    className="w-1.5 h-1.5 rounded-full bg-secondary/45"
+                    style={{
+                      animation: `fade-in 0.55s ease-in-out ${i * 0.18}s infinite alternate`,
+                    }}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </AnimatePresence>
