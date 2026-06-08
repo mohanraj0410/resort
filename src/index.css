@@ -182,10 +182,7 @@
     padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   }
 
-  section[id]:not(#home) {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 480px;
-  }
+
 
   /* hero-slide-img: opacity crossfade now handled inline via style prop */
 

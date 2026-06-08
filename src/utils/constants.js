@@ -249,6 +249,13 @@ export const NEARBY_PLACES = [
     time: '3 hr',
     image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Valparai_GhatRoad.JPG',
     mapsUrl: 'https://maps.google.com/?q=Valparai+Hills+Coimbatore',
+  },
+  {
+    name: 'Malampuzha Dam',
+    distance: '61.2 km',
+    time: '1 hr 16 min',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Malampuzha_Dam_View.JPG',
+    mapsUrl: 'https://maps.google.com/?q=Malampuzha+Dam+Palakkad',
   }
 ];
 

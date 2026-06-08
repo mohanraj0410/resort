@@ -5,13 +5,14 @@ import SectionHeading from '../components/ui/SectionHeading';
 
 const imageHeights = ['h-44 xs:h-52 sm:h-56', 'h-40 xs:h-48 sm:h-52', 'h-48 xs:h-56 sm:h-64'];
 
-const GalleryImage = memo(function GalleryImage({ src, alt, category, className }) {
+const GalleryImage = memo(function GalleryImage({ src, alt, category, className, index }) {
   return (
     <div className={`relative overflow-hidden bg-dark group ${className}`}>
       <img
         src={src}
         alt={alt}
-        loading="lazy"
+        loading={index < 4 ? "eager" : "lazy"}
+        fetchPriority={index < 4 ? "high" : "auto"}
         decoding="async"
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
@@ -69,6 +70,7 @@ export default function Gallery() {
                 src={img.src}
                 alt={img.alt}
                 category={img.category}
+                index={i}
                 className={`rounded-xl xs:rounded-2xl ${imageHeights[i % 3]}`}
               />
             </div>

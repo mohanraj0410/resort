@@ -10,7 +10,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((c) => (c + 1) % HERO_SLIDES.length);
-    }, 6000);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
@@ -28,13 +28,13 @@ export default function Hero() {
             alt={slide.alt}
             fetchPriority={i === 0 ? "high" : "low"}
             decoding={i === 0 ? "sync" : "async"}
-            loading={i === 0 ? "eager" : "lazy"}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+            loading="eager"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
             style={{ opacity: i === current ? 1 : 0 }}
           />
         ))}
         <div className="absolute inset-0 hero-gradient" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/25 to-dark/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/35 via-dark/5 to-dark/15" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center w-full max-w-full section-container !px-3 sm2:!px-5">
@@ -51,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.55 }}
-          className="heading-balance font-display text-[1.45rem] sm2:text-[1.85rem] sm3:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-semibold text-cream w-full max-w-full sm2:max-w-lg sm:max-w-2xl md:max-w-4xl"
+          className="heading-balance font-display text-[1.45rem] sm2:text-[1.85rem] sm3:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-semibold text-white w-full max-w-full sm2:max-w-lg sm:max-w-2xl md:max-w-4xl"
         >
           Where{" "}
           <span className="hero-label italic" style={{ color: "#c21a12" }}>

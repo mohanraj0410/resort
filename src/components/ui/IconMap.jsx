@@ -28,7 +28,7 @@ import {
   MdLocationOn,
   MdSend,
 } from 'react-icons/md';
-import { IoClose, IoChevronDown, IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { IoClose, IoChevronDown, IoChevronUp, IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { BsZoomIn, BsQuote, BsPlus, BsDash } from 'react-icons/bs';
 import { IoPlayCircle } from 'react-icons/io5';
 import { HiMenuAlt3 } from 'react-icons/hi';
@@ -63,6 +63,7 @@ const ICONS = {
   Menu: HiMenuAlt3,
   X: IoClose,
   ChevronDown: IoChevronDown,
+  ChevronUp: IoChevronUp,
   ChevronLeft: IoChevronBack,
   ChevronRight: IoChevronForward,
   ZoomIn: BsZoomIn,
