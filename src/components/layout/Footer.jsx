@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { RESORT, FOOTER_LINKS, SOCIAL_LINKS } from '../../utils/constants';
-import Logo from '../ui/Logo';
+import LogoImg from '../../assets/logo.png';
 import IconMap from '../ui/IconMap';
 import Button from '../ui/Button';
 
@@ -37,7 +37,23 @@ export default function Footer() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12">
             {/* Brand */}
             <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
-              <Logo size="lg" className="justify-center lg:justify-start" />
+            <a href="#home" className="group flex items-center gap-1.5 sm2:gap-2 min-w-0 flex-1 overflow-hidden">
+            <div className="border-secondary-light bg-white shadow-[0_0_5px_rgba(198,138,31,0.2)] border-1 rounded-2xl w-14 p-1 flex items-center justify-center">
+              <img
+              src={LogoImg}
+              alt={RESORT.name}
+              className="w-8 h-8 sm2:w-9 sm2:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 object-contain rounded-lg sm2:rounded-xl"
+              />
+              </div>
+              <div className="flex flex-col leading-tight min-w-0 overflow-hidden">
+            <span className="text-xs sm2:text-sm md:text-base lg:text-lg font-display font-bold tracking-wide sm2:tracking-wider text-gradient-gold truncate">
+              Red Fort
+            </span>
+            <span className="sm2:block text-[8px] md:text-[9.5px] tracking-[0.15em] uppercase text-muted font-medium truncate">
+              Resort
+            </span>
+          </div>
+          </a>
               <p className="mt-5 font-display text-lg italic text-cream/80 leading-relaxed max-w-xs">
                 Where luxury meets heritage
               </p>
@@ -94,7 +110,7 @@ export default function Footer() {
                 <FooterHeading>Contact</FooterHeading>
                 <ul className="space-y-4">
                   <li className="flex gap-3 items-start group">
-                    <span className="w-9 h-9 shrink-0 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center group-hover:border-secondary/30 transition-colors">
+                    <span className="w-9 h-9 shrink-0 rounded-lg bg-white/[0.04] border border-border flex items-center justify-center group-hover:border-secondary/30 transition-colors">
                       <IconMap name="MapPin" size={15} className="text-secondary" />
                     </span>
                     <span className="text-sm text-cream/70 leading-relaxed break-words pt-1.5">
@@ -102,7 +118,7 @@ export default function Footer() {
                     </span>
                   </li>
                   <li className="flex gap-3 items-center group">
-                    <span className="w-9 h-9 shrink-0 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center group-hover:border-secondary/30 transition-colors">
+                    <span className="w-9 h-9 shrink-0 rounded-lg bg-white/[0.04] border border-border flex items-center justify-center group-hover:border-secondary/30 transition-colors">
                       <IconMap name="Phone" size={15} className="text-secondary" />
                     </span>
                     <a
@@ -113,7 +129,7 @@ export default function Footer() {
                     </a>
                   </li>
                   <li className="flex gap-3 items-center group min-w-0">
-                    <span className="w-9 h-9 shrink-0 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center group-hover:border-secondary/30 transition-colors">
+                    <span className="w-9 h-9 shrink-0 rounded-lg bg-white/[0.04] border border-border flex items-center justify-center group-hover:border-secondary/30 transition-colors">
                       <IconMap name="Mail" size={15} className="text-secondary" />
                     </span>
                     <a
@@ -156,7 +172,7 @@ export default function Footer() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
-                      className="w-full min-w-0 px-4 py-3 rounded-xl bg-dark/40 border border-white/10 text-sm text-cream placeholder:text-muted focus:outline-none focus:border-secondary/50 transition-colors"
+                      className="w-full min-w-0 px-4 py-3 rounded-xl bg-white border border-border text-sm text-cream placeholder:text-muted/60 focus:outline-none focus:border-secondary transition-colors"
                     />
                     <button
                       type="submit"
@@ -172,7 +188,7 @@ export default function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="mt-10 sm2:mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="mt-10 sm2:mt-14 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-muted text-center sm:text-left break-words">
               &copy; {new Date().getFullYear()} {RESORT.name}. All rights reserved.
             </p>

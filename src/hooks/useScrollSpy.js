@@ -1,22 +1,36 @@
-import { useState } from 'react';
-import { useThrottledCallback } from './useThrottledCallback';
+import { useState, useEffect } from 'react';
 
 export function useScrollSpy(sectionIds, offset = 120) {
   const [activeId, setActiveId] = useState(sectionIds[0] || '');
 
-  useThrottledCallback(() => {
-    const scrollY = window.scrollY + offset;
-    let nextId = sectionIds[0] || '';
+  useEffect(() => {
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
 
-    for (let i = sectionIds.length - 1; i >= 0; i--) {
-      const el = document.getElementById(sectionIds[i]);
-      if (el && el.offsetTop <= scrollY) {
-        nextId = sectionIds[i];
-        break;
-      }
-    }
+    if (elements.length === 0) return;
 
-    setActiveId((prev) => (prev === nextId ? prev : nextId));
+    const observerOptions = {
+      root: null,
+      rootMargin: `-${offset}px 0px -60% 0px`,
+      threshold: 0,
+    };
+
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
   }, [sectionIds, offset]);
 
   return activeId;

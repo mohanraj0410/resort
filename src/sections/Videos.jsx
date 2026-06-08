@@ -9,7 +9,7 @@ function VideoCard({ item }) {
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
       setPlaying(true);
     }
   };
@@ -40,14 +40,14 @@ function VideoCard({ item }) {
           className="w-full h-full object-cover"
         />
         {!playing && (
-          <div className="absolute inset-0 flex items-center justify-center bg-dark/30">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/35">
             <div className="w-12 h-12 xs:w-14 xs:h-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-              <IconMap name="Play" size={24} className="text-cream ml-0.5 xs:ml-1" />
+              <IconMap name="Play" size={24} className="text-white ml-0.5 xs:ml-1" />
             </div>
           </div>
         )}
-        <div className="absolute inset-x-0 bottom-0 p-3 xs:p-4 bg-gradient-to-t from-dark/90 to-transparent">
-          <p className="text-xs xs:text-sm font-medium text-cream line-clamp-2">{item.title}</p>
+        <div className="absolute inset-x-0 bottom-0 p-3 xs:p-4 bg-gradient-to-t from-black/90 to-transparent">
+          <p className="text-xs xs:text-sm font-medium text-white line-clamp-2">{item.title}</p>
         </div>
       </div>
     </div>
@@ -66,35 +66,13 @@ export default function Videos() {
 
   return (
     <section id="videos" className="section-padding bg-dark-soft overflow-hidden">
-      <div className="section-container">
-        <div className="flex flex-col sm3:flex-row sm3:items-end justify-between gap-4 mb-8 xs:mb-10 min-w-0">
-          <div className="flex-1 min-w-0">
-            <SectionHeading
-              label="Experience"
-              title="Resort Reels"
-              subtitle="Short glimpses into the Red Fort Resort lifestyle."
-              align="left"
-            />
-          </div>
-          <div className="flex gap-2 shrink-0 self-start sm3:self-end sm3:mb-12 md:mb-16">
-            <button
-              type="button"
-              onClick={() => scroll(-1)}
-              className="w-10 h-10 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
-              aria-label="Previous"
-            >
-              <IconMap name="ChevronLeft" size={20} />
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll(1)}
-              className="w-10 h-10 rounded-full glass flex items-center justify-center text-cream hover:bg-white/10"
-              aria-label="Next"
-            >
-              <IconMap name="ChevronRight" size={20} />
-            </button>
-          </div>
-        </div>
+      <div className="mb-8 xs:mb-10 flex justify-center">
+        <SectionHeading
+          label="Experience"
+          title="Resort Reels"
+          subtitle="Short glimpses into the Red Fort Resort lifestyle."
+          align="center"
+        />
       </div>
 
       <div
@@ -104,6 +82,7 @@ export default function Videos() {
           scrollbarWidth: 'none',
           paddingLeft: 'max(1rem, calc((100% - min(100%, 80rem)) / 2 + 1rem))',
           paddingRight: 'max(1rem, calc((100% - min(100%, 80rem)) / 2 + 1rem))',
+          justifyContent: "center",
         }}
       >
         {SHORT_VIDEOS.map((item) => (
@@ -111,6 +90,26 @@ export default function Videos() {
             <VideoCard item={item} />
           </div>
         ))}
+      </div>
+
+      <div className="flex justify-center gap-3 mt-8">
+        <button
+          type="button"
+          onClick={() => scroll(-1)}
+          className="w-10 h-10 rounded-full glass flex items-center justify-center text-secondary hover:bg-white/10"
+          aria-label="Previous"
+        >
+          <IconMap name="ChevronLeft" size={20} />
+        </button>
+
+        <button
+          type="button"
+          onClick={() => scroll(1)}
+          className="w-10 h-10 rounded-full glass flex items-center justify-center text-secondary hover:bg-white/10"
+          aria-label="Next"
+        >
+          <IconMap name="ChevronRight" size={20} />
+        </button>
       </div>
     </section>
   );

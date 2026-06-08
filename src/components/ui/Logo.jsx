@@ -83,9 +83,9 @@ export default function Logo({
             </linearGradient>
 
             <linearGradient id="redGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#d32f2f" />
-              <stop offset="40%" stopColor="#a10d0d" />
-              <stop offset="100%" stopColor="#6b0505" />
+              <stop offset="0%" stopColor="#b02821" />
+              <stop offset="40%" stopColor="#821510" />
+              <stop offset="100%" stopColor="#590602" />
             </linearGradient>
 
             <radialGradient id="sunGlow" cx="50%" cy="36%" r="35%">

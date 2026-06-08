@@ -37,7 +37,7 @@ export default function Support() {
           className="relative rounded-2xl sm2:rounded-3xl overflow-hidden min-w-0"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-dark-soft to-secondary/10" />
-          <div className="absolute inset-0 glass-card rounded-2xl sm2:rounded-3xl border-white/10" />
+          <div className="absolute inset-0 glass-card rounded-2xl sm2:rounded-3xl border-border" />
           <div className="absolute top-0 right-0 w-64 h-64 pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(198,138,31,0.12) 0%, transparent 70%)' }} />
           <div className="absolute bottom-0 left-0 w-48 h-48 pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(161,13,13,0.12) 0%, transparent 70%)' }} />
 
@@ -67,7 +67,7 @@ export default function Support() {
                   href={action.href}
                   target={action.external ? '_blank' : undefined}
                   rel={action.external ? 'noopener noreferrer' : undefined}
-                  className="group flex flex-col items-center text-center p-5 rounded-2xl bg-dark/30 border border-white/10 hover:border-secondary/40 hover:bg-white/[0.04] hover:shadow-[0_12px_40px_rgba(198,138,31,0.12)] hover:-translate-y-1.5 transition-all duration-300 min-w-0"
+                  className="group flex flex-col items-center text-center p-5 rounded-2xl bg-white border border-border hover:border-secondary/40 hover:bg-white hover:shadow-[0_12px_40px_rgba(198,138,31,0.06)] hover:-translate-y-1.5 transition-all duration-300 min-w-0"
                 >
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/25 to-secondary/20 flex items-center justify-center mb-4 group-hover:from-secondary/30 group-hover:to-secondary/10 transition-all duration-300">
                     <IconMap name={action.icon} size={22} className="text-secondary" />
