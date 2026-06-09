@@ -156,13 +156,13 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="lg:hidden fixed inset-0 top-16 overflow-y-auto"
+            className="lg:hidden absolute top-full left-0 right-0 overflow-y-auto"
             style={{
+              height: 'calc(100dvh - 4rem)',
               background: 'rgba(255,249,242,0.98)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               borderTop: '1px solid var(--color-border)',
-              zIndex: 60,
             }}
           >
             <div className="section-container py-6 flex flex-col h-full min-h-[calc(100dvh-4rem)]">
@@ -176,7 +176,7 @@ export default function Navbar() {
                   >
                     <a
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={() => { document.body.style.overflow = ""; setMobileOpen(false); }}
                       className={`group flex items-center justify-between py-4 border-b transition-colors ${
                         activeId === link.id
                           ? "border-secondary/30 text-secondary"
@@ -186,13 +186,6 @@ export default function Navbar() {
                       <span className="font-display text-2xl font-semibold tracking-tight">
                         {link.label}
                       </span>
-                      <IconMap
-                        name="ArrowRight"
-                        size={18}
-                        className={`transition-all duration-200 group-hover:translate-x-1 ${
-                          activeId === link.id ? "text-secondary" : "text-muted"
-                        }`}
-                      />
                     </a>
                   </motion.li>
                 ))}
@@ -208,11 +201,11 @@ export default function Navbar() {
                   href={RESORT.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => { document.body.style.overflow = ""; setMobileOpen(false); }}
                   className="flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl bg-gradient-to-r from-primary to-primary-light text-white font-semibold text-base shadow-[0_4px_20px_rgba(130,21,16,0.3)]"
                 >
                   <IconMap name="Phone" size={18} />
-                  Book Now — Chat on WhatsApp
+                  Book Now
                 </a>
                 <p className="text-center text-xs text-muted pb-2">
                   Available 24/7 · Instant Response

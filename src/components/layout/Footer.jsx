@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-dark overflow-hidden w-full">
+    <footer className="relative bg-dark-soft overflow-hidden w-full">
       {/* Top divider */}
       <div className="h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent" />
 

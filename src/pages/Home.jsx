@@ -10,7 +10,6 @@ const NearbyPlaces = lazy(() => import('../sections/NearbyPlaces'));
 const FAQ = lazy(() => import('../sections/FAQ'));
 const Contact = lazy(() => import('../sections/Contact'));
 const MapSection = lazy(() => import('../sections/MapSection'));
-const Support = lazy(() => import('../sections/Support'));
 
 function SectionFallback() {
   return <div className="section-padding min-h-[12rem]" aria-hidden />;
@@ -30,7 +29,6 @@ export default function Home() {
         <FAQ />
         <MapSection />
         <Contact />
-        <Support />
       </Suspense>
     </>
   );
