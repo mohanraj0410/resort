@@ -169,17 +169,6 @@ export default function Amenities() {
               Including valet parking, high-speed WiFi, and daily housekeeping
             </p>
           </div>
-          <a
-            href="#contact"
-            className="shrink-0 flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5"
-            style={{
-              background: 'linear-gradient(135deg, #5c0f0b 0%, #821510 55%, #a6231c 100%)',
-              boxShadow: '0 4px 20px rgba(130,21,16,0.28)',
-            }}
-          >
-            Book Your Stay
-            <IconMap name="ArrowRight" size={12} />
-          </a>
         </motion.div>
       </div>
     </section>

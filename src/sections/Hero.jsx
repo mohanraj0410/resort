@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { HERO_SLIDES, RESORT } from "../utils/constants";
+import { HERO_SLIDES } from "../utils/constants";
 import IconMap from "../components/ui/IconMap";
 
 export default function Hero() {
@@ -181,32 +181,17 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.74, duration: 0.60 }}
             className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 w-full"
-          >
-            <a
-              href={RESORT.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-semibold text-sm sm:text-[15px] text-white overflow-hidden transition-transform duration-300 hover:-translate-y-1"
-              style={{
-                background:
-                  "linear-gradient(135deg, #5c0f0b 0%, #7e1310 48%, #9d1f18 100%)",
-                boxShadow:
-                  "0 6px 32px rgba(130,21,16,0.50), 0 2px 8px rgba(130,21,16,0.35)",
-              }}
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
-              <IconMap name="CalendarDays" size={15} />
-              Book Your Stay
-            </a>
+          >           
 
             <a
               href="#about"
               className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-semibold text-sm sm:text-[15px] transition-all duration-300 hover:-translate-y-1"
               style={{
                 color: "rgba(240,232,218,0.90)",
-                border: "1.5px solid rgba(255,255,255,0.26)",
-                background: "rgba(255,255,255,0.08)",
-                backdropFilter: "blur(12px)",
+                background:
+                  "linear-gradient(135deg, #5c0f0b 0%, #7e1310 48%, #9d1f18 100%)",
+                boxShadow:
+                  "0 6px 32px rgba(130,21,16,0.50), 0 2px 8px rgba(130,21,16,0.35)",
               }}
             >
               Explore Resort

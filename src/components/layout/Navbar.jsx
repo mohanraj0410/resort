@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS, RESORT } from "../../utils/constants";
+import { NAV_LINKS } from "../../utils/constants";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import logo from "../../assets/logo.png";
-import IconMap from "../ui/IconMap";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -99,21 +98,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
-        <a
-          href={RESORT.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`hidden lg:flex items-center gap-2 shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
-            scrolled
-              ? "bg-gradient-to-r from-primary to-primary-light text-white shadow-[0_4px_16px_rgba(130,21,16,0.25)] hover:shadow-[0_6px_24px_rgba(130,21,16,0.35)] hover:-translate-y-0.5"
-              : "border border-white/35 text-white bg-white/8 hover:bg-white/16 hover:border-white/55"
-          }`}
-        >
-          <IconMap name="Phone" size={14} />
-          Book Now
-        </a>
-
         {/* Mobile hamburger */}
         <button
           type="button"
@@ -197,16 +181,6 @@ export default function Navbar() {
                 transition={{ delay: 0.32, duration: 0.22 }}
                 className="mt-8 space-y-3 safe-bottom"
               >
-                <a
-                  href={RESORT.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => { document.body.style.overflow = ""; setMobileOpen(false); }}
-                  className="flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl bg-gradient-to-r from-primary to-primary-light text-white font-semibold text-base shadow-[0_4px_20px_rgba(130,21,16,0.3)]"
-                >
-                  <IconMap name="Phone" size={18} />
-                  Book Now
-                </a>
                 <p className="text-center text-xs text-muted pb-2">
                   Available 24/7 · Instant Response
                 </p>
