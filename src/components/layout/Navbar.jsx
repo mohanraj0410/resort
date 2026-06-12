@@ -43,7 +43,7 @@ export default function Navbar() {
             className={`rounded-xl p-0.5 transition-all duration-300 shrink-0 ${
               scrolled
                 ? "border border-secondary/30 bg-white shadow-[0_0_12px_rgba(184,122,28,0.15)]"
-                : "border border-white/20 bg-white/8"
+                : "border border-white bg-white"
             }`}
           >
             <img
@@ -56,14 +56,14 @@ export default function Navbar() {
           <div className="flex flex-col leading-none min-w-0 overflow-hidden">
             <span
               className={`text-sm md:text-base lg:text-lg font-display font-bold tracking-wide truncate transition-colors duration-300 ${
-                isLight ? "text-white drop-shadow-sm" : "text-gradient-gold"
+                isLight ? "text-white drop-shadow-sm" : "text-primary "
               }`}
             >
               Red Fort
             </span>
             <span
               className={`text-[9px] md:text-[10px] tracking-[0.2em] uppercase font-semibold font-body truncate transition-colors duration-300 ${
-                isLight ? "text-white/70" : "text-primary"
+                isLight ? "text-white/70" : "text-gradient-gold"
               }`}
             >
               Resort

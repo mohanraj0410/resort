@@ -58,7 +58,9 @@ export default function Gallery() {
 
   const allFiltered =
     filter === 'All'
-      ? GALLERY_IMAGES
+      ? GALLERY_IMAGES.filter((img, index, self) =>
+          self.findIndex((t) => t.src === img.src) === index
+        )
       : GALLERY_IMAGES.filter((img) => img.category === filter);
 
   const visible = showAll ? allFiltered : allFiltered.slice(0, INITIAL_VISIBLE);

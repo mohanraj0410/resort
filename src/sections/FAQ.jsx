@@ -99,20 +99,6 @@ export default function FAQ() {
             />
           ))}
         </motion.div>
-
-        {/* CTA hint */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-8 text-center text-sm text-muted"
-        >
-          Still have questions?{' '}
-          <a href="#contact" className="text-secondary hover:text-secondary-light font-semibold transition-colors underline underline-offset-2">
-            Contact our concierge
-          </a>
-        </motion.p>
       </div>
     </section>
   );

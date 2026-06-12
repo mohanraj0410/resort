@@ -4,12 +4,14 @@ import room2 from '../assets/room2.webp';
 import room3 from '../assets/room3.webp';
 import room4 from '../assets/room4.webp';
 import room5 from '../assets/room5.webp';
+import wineDineNight from '../assets/wine_dine_night.png';
 
 export const RESORT = {
   name: 'Red Fort Resort',
   shortName: 'Red Fort',
   tagline: 'Luxury Heritage Retreat',
-  phone: '+91 98945 11744',
+  phone: '+91 98945 11911',
+  phoneSecondary: '+91 98945 11744',
   email: 'hello@redfort.com',
   whatsapp: '919894511911',
   whatsappUrl: 'https://wa.me/919894511911',
@@ -53,18 +55,17 @@ export const ABOUT_IMAGES = [
 
 export const STATS = [
   { label: 'Happy Guests', value: 12500, suffix: '+' },
-  { label: 'Luxury Rooms', value: 30, suffix: '' },
+  { label: 'Luxury Rooms', value: 16, suffix: '' },
   { label: 'Years of Excellence', value: 7, suffix: '+' },
   { label: 'Events Hosted', value: 124, suffix: '+' },
 ];
 
 export const AMENITIES = [
   { icon: 'Bed', title: 'Luxury Rooms', desc: 'Spacious suites with panoramic valley views and bespoke interiors.' },
-  { icon: 'UtensilsCrossed', title: 'Fine Dining', desc: 'Farm-to-table cuisine with curated wine pairings.' },
   { icon: 'Flame', title: 'Campfire Nights', desc: 'Starlit gatherings with live acoustic performances.' },
   { icon: 'Trees', title: 'Nature Views', desc: 'Private balconies framed by tea gardens and waterfalls.' },
   { icon: 'Wifi', title: 'Free WiFi', desc: 'High-speed connectivity across the entire property.' },
-  { icon: 'Car', title: 'Valet Parking', desc: 'Complimentary valet and EV charging stations.' },
+  { icon: 'Car', title: 'Spacious Parking', desc: 'Spacious car parking and EV charging stations.' },
 ];
 
 export const GALLERY_CATEGORIES = ['All', 'Rooms', 'Dining', 'Nature', 'Events'];
@@ -99,7 +100,7 @@ export const SHORT_VIDEOS = [
   },
   {
     title: 'Wine & Dine Night',
-    poster: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&q=80',
+    poster: wineDineNight,
     video: 'https://assets.mixkit.co/videos/preview/mixkit-wine-and-dine-night-437-large.mp4',
   },
 ];

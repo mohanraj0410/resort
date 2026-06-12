@@ -147,29 +147,6 @@ export default function Amenities() {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* ── Bottom strip ─────────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 px-5 sm:px-7 py-4 sm:py-5 rounded-2xl"
-          style={{
-            background: 'linear-gradient(135deg, #fff 0%, #fdf5e8 100%)',
-            border: '1px solid rgba(184,122,28,0.16)',
-            boxShadow: '0 4px 24px rgba(45,34,24,0.07)',
-          }}
-        >
-          <div className="text-center sm:text-left">
-            <p className="text-sm sm:text-[15px] font-semibold text-cream">
-              All amenities are complimentary for every guest
-            </p>
-            <p className="text-xs mt-0.5 text-muted">
-              Including valet parking, high-speed WiFi, and daily housekeeping
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

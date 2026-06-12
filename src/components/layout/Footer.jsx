@@ -138,16 +138,24 @@ export default function Footer() {
                       {RESORT.address}
                     </span>
                   </li>
-                  <li className="flex gap-3 items-center group">
-                    <span className="w-8 h-8 shrink-0 rounded-lg bg-white/[0.04] border border-border flex items-center justify-center group-hover:border-secondary/30 transition-colors">
+                  <li className="flex gap-3 items-start group">
+                    <span className="w-8 h-8 shrink-0 rounded-lg bg-white/[0.04] border border-border flex items-center justify-center group-hover:border-secondary/30 transition-colors mt-0.5">
                       <IconMap name="Phone" size={13} className="text-secondary" />
                     </span>
-                    <a
-                      href={`tel:${RESORT.phone}`}
-                      className="text-sm text-cream/65 hover:text-secondary transition-colors"
-                    >
-                      {RESORT.phone}
-                    </a>
+                    <div className="flex flex-col">
+                      <a
+                        href={`tel:${RESORT.phone}`}
+                        className="text-sm text-cream/65 hover:text-secondary transition-colors"
+                      >
+                        {RESORT.phone} (Primary)
+                      </a>
+                      <a
+                        href={`tel:${RESORT.phoneSecondary}`}
+                        className="text-sm text-cream/65 hover:text-secondary transition-colors mt-0.5"
+                      >
+                        {RESORT.phoneSecondary} (Secondary)
+                      </a>
+                    </div>
                   </li>
                   <li className="flex gap-3 items-center group min-w-0">
                     <span className="w-8 h-8 shrink-0 rounded-lg bg-white/[0.04] border border-border flex items-center justify-center group-hover:border-secondary/30 transition-colors">

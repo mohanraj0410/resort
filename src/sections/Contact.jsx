@@ -13,7 +13,8 @@ import { slideInLeft, slideInRight } from "../animations/variants";
 const initialForm = { name: "", email: "", phone: "", message: "" };
 
 const CONTACT_DETAILS = [
-  { icon: "Phone", label: "Phone", value: RESORT.phone, href: `tel:${RESORT.phone}` },
+  { icon: "Phone", label: "Primary Phone", value: RESORT.phone, href: `tel:${RESORT.phone}` },
+  { icon: "Phone", label: "Secondary Phone", value: RESORT.phoneSecondary, href: `tel:${RESORT.phoneSecondary}` },
   { icon: "Mail",  label: "Email", value: RESORT.email, href: `mailto:${RESORT.email}` },
   { icon: "MapPin", label: "Address", value: RESORT.address, href: RESORT.directionsUrl },
 ];
@@ -56,7 +57,7 @@ export default function Contact() {
     `input-field ${errors[field] ? 'error' : ''}`;
 
   return (
-    <section id="contact" className="section-padding bg-dark overflow-hidden">
+    <section id="contact" className="section-padding bg-dark-soft overflow-hidden">
       <div
         className="absolute top-0 left-0 w-96 h-96 pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(130,21,16,0.04) 0%, transparent 70%)' }}
@@ -107,10 +108,10 @@ export default function Contact() {
                 className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 space-y-4"
                 noValidate
               >
-                <h3 className="font-display text-xl sm:text-2xl text-cream font-semibold mb-1">
+                <h3 className="font-display text-xl sm:text-2xl text-cream font-semibold mb-2">
                   Send a Message
                 </h3>
-                <p className="text-sm text-muted -mt-1 mb-2">
+                <p className="text-sm text-muted -mt-1 mb-8">
                   Fill out the form and we'll respond within 24 hours.
                 </p>
 

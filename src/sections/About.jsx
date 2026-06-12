@@ -6,10 +6,9 @@ import IconMap from '../components/ui/IconMap';
 import { staggerContainer, fadeInUp, slideInLeft, slideInRight } from '../animations/variants';
 
 const FEATURE_LIST = [
-  { icon: 'Check', text: 'Michelin-inspired farm-to-table dining' },
   { icon: 'Check', text: 'Private event venues for up to 300 guests' },
   { icon: 'Check', text: 'Eco-conscious luxury practices' },
-  { icon: 'Check', text: 'Complimentary valet & EV charging' },
+  { icon: 'Check', text: 'Spacious car parking' },
   { icon: 'Check', text: 'High-speed WiFi throughout the property' },
 ];
 

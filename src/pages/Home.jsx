@@ -25,10 +25,10 @@ export default function Home() {
         <Amenities />
         <Videos />
         <Events />
-        <NearbyPlaces />
-        <FAQ />
         <MapSection />
+        <NearbyPlaces />
         <Contact />
+        <FAQ />
       </Suspense>
     </>
   );

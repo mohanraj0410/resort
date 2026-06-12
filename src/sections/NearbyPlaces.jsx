@@ -11,7 +11,7 @@ export default function NearbyPlaces() {
   const visible = showAll ? NEARBY_PLACES : NEARBY_PLACES.slice(0, INITIAL_VISIBLE);
 
   return (
-    <section id="nearby" className="section-padding bg-dark-soft overflow-hidden">
+    <section id="nearby" className="section-padding bg-dark overflow-hidden">
       <div
         className="absolute top-0 right-0 w-72 h-72 pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(184,122,28,0.055) 0%, transparent 68%)' }}

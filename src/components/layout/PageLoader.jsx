@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { RESORT } from '../../utils/constants';
 import Logo from '../ui/Logo';
 
-const DISPLAY_MS = 600;  // how long loader stays visible before exiting
+const DISPLAY_MS = 300;  // how long loader stays visible before exiting
 const EXIT_MS    = 480;  // panel slide duration
 
 export default function PageLoader({ onComplete }) {

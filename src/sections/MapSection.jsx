@@ -8,7 +8,7 @@ import { slideInLeft, slideInRight } from '../animations/variants';
 const QUICK_FACTS = [
   { icon: 'Clock', label: 'Check-in', value: '2:00 PM' },
   { icon: 'Clock', label: 'Check-out', value: '11:00 AM' },
-  { icon: 'Car', label: 'Parking', value: 'Free Valet' },
+  { icon: 'Car', label: 'Parking', value: 'Free Parking' },
 ];
 
 export default function MapSection() {
@@ -42,15 +42,26 @@ export default function MapSection() {
             </div>
 
             {/* Phone */}
-            <a
-              href={`tel:${RESORT.phone}`}
-              className="group flex items-center gap-3 text-sm text-cream/70 hover:text-secondary transition-colors"
-            >
-              <span className="w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 group-hover:bg-secondary/20 transition-colors">
-                <IconMap name="Phone" size={14} className="text-secondary" />
-              </span>
-              {RESORT.phone}
-            </a>
+            <div className="flex flex-col gap-2.5">
+              <a
+                href={`tel:${RESORT.phone}`}
+                className="group flex items-center gap-3 text-sm text-cream/70 hover:text-secondary transition-colors"
+              >
+                <span className="w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 group-hover:bg-secondary/20 transition-colors">
+                  <IconMap name="Phone" size={14} className="text-secondary" />
+                </span>
+                {RESORT.phone} <span className="text-xs text-muted ml-1">(Primary)</span>
+              </a>
+              <a
+                href={`tel:${RESORT.phoneSecondary}`}
+                className="group flex items-center gap-3 text-sm text-cream/70 hover:text-secondary transition-colors"
+              >
+                <span className="w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 group-hover:bg-secondary/20 transition-colors">
+                  <IconMap name="Phone" size={14} className="text-secondary" />
+                </span>
+                {RESORT.phoneSecondary} <span className="text-xs text-muted ml-1">(Secondary)</span>
+              </a>
+            </div>
 
             {/* Quick facts */}
             <div className="grid grid-cols-3 gap-2.5">
